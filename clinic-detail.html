@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinic Profile | DentiTrust</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 112px;
+        }
+        body {
+            background:
+                radial-gradient(circle at top left, rgba(59,130,246,0.12), transparent 34%),
+                radial-gradient(circle at top right, rgba(14,165,233,0.08), transparent 28%),
+                #f8fafc;
+        }
+        .detail-shell {
+            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
+            backdrop-filter: blur(12px);
+        }
+        .soft-card {
+            box-shadow: 0 25px 70px rgba(15, 23, 42, 0.08);
+        }
+        .media-shadow {
+            box-shadow: 0 30px 90px rgba(15, 23, 42, 0.18);
+        }
+        .thumb-active {
+            outline: 2px solid rgb(37 99 235);
+            outline-offset: 2px;
+        }
+        .sticky-panel {
+            position: static;
+        }
+        .hide-scrollbar {
+            scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="text-slate-900">
+    <nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/85 backdrop-blur-xl">
+        <div class="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-6 md:h-24">
+            <a href="index.html" class="flex items-center gap-2 text-2xl font-black tracking-tighter">
+                <span class="h-8 w-8 rounded-lg bg-blue-600 shadow-lg shadow-blue-200"></span>
+                DentiTrust
+            </a>
+            <div class="hidden items-center space-x-10 text-[13px] font-black uppercase tracking-widest md:flex">
+                <a href="index.html#about" class="hover:text-blue-600 transition-colors">Why Us</a>
+                <a href="index.html#price-comparison" class="hover:text-blue-600 transition-colors">Compare</a>
+                <a href="index.html#clinics" class="hover:text-blue-600 transition-colors">Top Clinics</a>
+                <a href="index.html#destinations" class="hover:text-blue-600 transition-colors">Travel</a>
+                <a href="blogs.html" class="hover:text-blue-600 transition-colors">Blogs</a>
+                <a href="index.html#book-now" class="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-6 py-3 text-slate-900 shadow-sm transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600">
+                    <span>BOOK NOW</span>
+                </a>
+            </div>
+            <button id="menu-btn" class="md:hidden p-2 text-slate-900" aria-label="Open menu">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
+            <a href="index.html#about" class="py-2">Why Us</a>
+            <a href="index.html#price-comparison" class="py-2 border-t border-slate-50">Compare</a>
+            <a href="index.html#clinics" class="py-2 border-t border-slate-50">Top Clinics</a>
+            <a href="index.html#destinations" class="py-2 border-t border-slate-50">Travel</a>
+            <a href="blogs.html" class="py-2 border-t border-slate-50">Blogs</a>
+            <a href="index.html#book-now" class="py-4 bg-blue-600 text-white rounded-xl">Book Now</a>
+        </div>
+    </nav>
+
+    <main class="pt-28 md:pt-32">
+        <section class="px-6 pb-12 md:pb-16">
+            <div class="mx-auto max-w-[1440px]">
+                <div class="space-y-6">
+                    <div class="detail-shell rounded-[2.5rem] border border-slate-100 p-6 md:p-8 soft-card">
+                        <div class="flex flex-wrap items-center gap-2 text-[11px] font-black uppercase tracking-[0.24em] text-blue-600">
+                            <a href="index.html" class="rounded-full bg-white px-3 py-1 text-slate-500 transition hover:text-blue-600">Home</a>
+                            <span id="detail-partner" class="rounded-full bg-blue-50 px-3 py-1"></span>
+                        </div>
+                        <h1 id="detail-title" class="mt-4 max-w-3xl text-4xl font-black tracking-tight leading-tight md:text-6xl"></h1>
+                        <p id="detail-summary" class="mt-5 max-w-3xl text-base leading-8 text-slate-600 md:text-lg"></p>
+
+                        <div class="mt-6 overflow-hidden rounded-[2rem] border border-slate-100 bg-slate-900 media-shadow">
+                            <div class="grid gap-0 lg:grid-cols-[1.25fr_0.75fr]">
+                                <div class="bg-slate-900 px-4 pt-4 md:px-5 md:pt-5">
+                                    <div class="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-slate-800 md:aspect-[16/10]">
+                                        <img id="detail-main-image" src="" alt="" class="h-full w-full object-cover">
+                                        <video id="detail-video" class="hidden h-full w-full object-cover" controls playsinline preload="metadata" muted></video>
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                                        <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
+                                            <p id="detail-media-label" class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-200"></p>
+                                            <p id="detail-image-caption" class="mt-2 max-w-2xl text-sm leading-7 text-white/80"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="border-t border-white/10 bg-slate-900/95 lg:border-l lg:border-t-0">
+                                    <div class="p-4 lg:p-5">
+                                        <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-200">Gallery</p>
+                                    </div>
+                                    <div id="detail-thumbs" class="hide-scrollbar flex gap-3 overflow-x-auto px-4 pb-4 snap-x snap-mandatory lg:grid lg:grid-cols-1 lg:gap-4 lg:overflow-visible lg:px-5 lg:pb-5"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-6 pb-12 md:pb-16">
+            <div class="mx-auto max-w-[1440px]">
+                <div class="grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
+                    <section class="rounded-[2rem] border border-slate-100 bg-white p-6 md:p-8 soft-card">
+                        <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-600">Clinic overview</p>
+                        <h2 class="mt-3 text-2xl font-black tracking-tight md:text-3xl">What this clinic does best.</h2>
+                        <p id="detail-description" class="mt-4 text-sm leading-8 text-slate-700 md:text-base"></p>
+                        <div class="mt-6 grid gap-4 md:grid-cols-2">
+                            <div class="rounded-[1.5rem] border border-slate-200 bg-slate-50 p-5">
+                                <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-600">Services</p>
+                                <ul id="detail-services" class="mt-4 flex flex-wrap gap-2"></ul>
+                            </div>
+                            <div class="rounded-[1.5rem] border border-blue-100 bg-blue-50 p-5">
+                                <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-600">Certifications</p>
+                                <ul id="detail-certs" class="mt-4 flex flex-wrap gap-2"></ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="detail-pricing" class="rounded-[2rem] border border-slate-100 bg-white p-6 md:p-8 soft-card">
+                        <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-600">Pricing snapshot</p>
+                        <div class="mt-3 flex items-center justify-between gap-4">
+                            <h2 class="text-2xl font-black tracking-tight">Starting prices</h2>
+                            <span class="rounded-full bg-blue-50 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-blue-700">USD</span>
+                        </div>
+                        <div id="detail-prices" class="mt-5 space-y-3"></div>
+                        <button id="detail-pdf-pricing" type="button" class="mt-5 inline-flex w-full items-center justify-center rounded-2xl border border-slate-200 bg-white px-5 py-4 text-sm font-black uppercase tracking-[0.18em] text-slate-900 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-600">Download full price table</button>
+                    </section>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-6 pb-12 md:pb-16">
+            <div class="mx-auto max-w-[1440px]">
+                <div class="rounded-[2rem] border border-slate-100 bg-white p-6 md:p-8 soft-card">
+                    <div class="flex items-center justify-between gap-4">
+                        <div>
+                            <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-600">Before / After</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-6">
+                        <section class="rounded-[1.75rem] border border-slate-100 bg-slate-50 p-5 md:p-6">
+                            <div id="detail-cases" class="mt-5 grid gap-4 md:grid-cols-2"></div>
+                        </section>
+                    </div>
+
+                    <div class="mt-6">
+                        <div class="flex items-center justify-between gap-4">
+                            <p class="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">Patient testimonials</p>
+                            <span class="text-xs font-semibold text-slate-500">Real traveler feedback</span>
+                        </div>
+                        <div id="detail-testimonials" class="mt-4 grid gap-4 md:grid-cols-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-slate-100 bg-white px-6 py-10">
+        <div class="mx-auto flex max-w-[1440px] flex-col gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
+            <a href="index.html" class="text-xl font-black tracking-tighter">DENTAL<span class="text-blue-600">TOURISM</span></a>
+            <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">Clinic profile page for international patients.</p>
+        </div>
+    </footer>
+
+    <a id="detail-wa-fab" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl shadow-green-500/30 transition hover:bg-green-600">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.52 3.48A11.8 11.8 0 0 0 12.04 0C5.5 0 .19 5.31.19 11.85c0 2.08.54 4.11 1.56 5.9L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.54 0 11.85-5.31 11.85-11.85 0-3.17-1.23-6.14-3.38-8.43Zm-8.48 18.26h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.8.99 1.02-3.7-.24-.38a9.82 9.82 0 0 1-1.5-5.21C2.14 6.52 6.5 2.16 12.05 2.16c2.62 0 5.08 1.02 6.93 2.86a9.72 9.72 0 0 1 2.86 6.9c0 5.55-4.36 9.82-9.8 9.82Zm5.7-7.42c-.31-.15-1.84-.9-2.12-1-.28-.1-.48-.15-.68.15-.2.3-.78 1-.96 1.2-.18.2-.35.23-.66.08-.31-.15-1.31-.48-2.5-1.53-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.47.13-.62.13-.13.31-.35.46-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.48-.5-.66-.51h-.56c-.2 0-.53.08-.8.38-.27.3-1.03 1-1.03 2.43s1.05 2.81 1.2 3c.15.2 2.07 3.16 5.01 4.43.7.3 1.24.48 1.67.62.7.22 1.33.19 1.83.12.56-.08 1.84-.75 2.1-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35Z"/>
+        </svg>
+    </a>
+
+    <script>
+        const whatsappBaseUrl = 'https://wa.me/84xxxxxxxxx';
+        const formatMoney = (value) => `$${Math.round(value).toLocaleString('en-US')}`;
+
+        const buildWhatsAppUrl = (message = '') => {
+            const text = message.trim();
+            if (!text) return whatsappBaseUrl;
+            return `${whatsappBaseUrl}?text=${encodeURIComponent(text)}`;
+        };
+
+        const clinics = [
+            {
+                slug: 'east-meets-west-dental',
+                title: 'East Meets West Dental',
+                partner: 'Partner Clinic',
+                spec: 'Implants & Crowns',
+                summary: 'Restorative care with digital planning for international visitors.',
+                description: 'Best for crowns, bridges, and implant-based restoration with clear treatment steps and follow-up support for travel patients.',
+                address: '24 Vo Nguyen Giap, Son Tra, Da Nang',
+                area: 'Son Tra district, near My Khe beach',
+                hours: 'Mon-Sat 08:00-19:00',
+                phone: '+84 236 000 0001',
+                email: 'hello@eastmeetswestdental.vn',
+                doctor: 'Restorative & implant lead',
+                languages: 'English, Vietnamese',
+                facilities: 'Digital X-ray, intraoral scan, sterilization room, English support',
+                idealFor: 'Implants, crowns, bridges, and patients who need a predictable multi-visit plan.',
+                visitCount: '1 to 3 visits',
+                recovery: 'Mild to moderate',
+                rating: '4.8 / 5 patient fit',
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=24+Vo+Nguyen+Giap+Son+Tra+Da+Nang',
+                website: 'eastmeetswestdental.vn',
+                certs: ['Digital treatment planning', 'Sterilization protocol', 'Implant workflow', 'English consultation'],
+                social: 'Patients from Australia and Singapore often shortlist clinics like this when they want a clear quote and a structured treatment plan.',
+                testimonial: '“They showed the scan, explained the steps, and gave me a plan I could trust before I flew in.”',
+                testimonialAuthor: 'Patient from Melbourne, Australia',
+                testimonials: [
+                    { quote: 'Clear plan, clean communication, and no confusion about the number of visits.', author: 'Patient from Sydney' },
+                    { quote: 'The scan-based approach made the treatment feel predictable from day one.', author: 'Patient from Melbourne' },
+                    { quote: 'Good coordination and fast responses before I traveled.', author: 'Patient from Singapore' }
+                ],
+                trustBio: 'Focuses on restorative planning, digital scans, and clear visit sequencing for international patients.',
+                images: [
+                    'https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1588776814546-ec7e2f8e0f84?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1600&q=80'
+                ],
+                video: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+                priceRows: [
+                    { item: 'Consultation', range: 'Free' },
+                    { item: 'Cleaning', range: '$30 - $60' },
+                    { item: 'Crown', range: '$180 - $350' },
+                    { item: 'Implant', range: '$650 - $800' }
+                ],
+                services: ['Implants', 'Crowns', 'Bridges', 'Digital scan', 'Consultation'],
+                highlights: ['Digital scans before treatment planning', 'Clear estimate before procedures', 'Suitable for multi-visit restorative cases', 'Concierge-supported coordination for travelers']
+            },
+            {
+                slug: 'serenity-international',
+                title: 'Serenity International',
+                partner: 'Verified Center',
+                spec: 'Smile Aesthetics',
+                summary: 'A cosmetic-focused clinic for veneers, whitening, and smile design with a polished patient experience.',
+                description: 'Best suited for travelers planning cosmetic improvements or a smile refresh. The clinic style is aligned with visitors who want a clean, premium environment and a process that balances aesthetics with comfort.',
+                address: '12 Tran Phu, Hai Chau, Da Nang',
+                area: 'Hai Chau, central city access',
+                hours: 'Mon-Sat 08:30-18:30',
+                phone: '+84 236 000 0002',
+                email: 'care@serenityinternational.vn',
+                doctor: 'Cosmetic dentistry lead',
+                languages: 'English, Vietnamese',
+                facilities: 'Cosmetic imaging, whitening suite, shade matching, translation support',
+                idealFor: 'Veneers, whitening, and smile design when appearance is the priority.',
+                visitCount: '1 to 2 visits',
+                recovery: 'Low',
+                rating: '4.7 / 5 patient fit',
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=12+Tran+Phu+Hai+Chau+Da+Nang',
+                website: 'serenityinternational.vn',
+                certs: ['Smile design workflow', 'Shade analysis', 'Photography-based planning', 'English consultation'],
+                social: 'Cosmetic travelers care about visuals, timing, and consistency. This profile is built to answer those concerns fast.',
+                testimonial: '“I could see the expected result before treatment and the communication felt calm and professional.”',
+                testimonialAuthor: 'Patient from Singapore',
+                testimonials: [
+                    { quote: 'The smile design preview was helpful and the whole process felt premium.', author: 'Patient from Singapore' },
+                    { quote: 'They explained the options clearly and kept the timeline realistic.', author: 'Patient from Kuala Lumpur' },
+                    { quote: 'Good fit for a short trip because the steps were simple.', author: 'Patient from Bangkok' }
+                ],
+                trustBio: 'Leads smile design and cosmetic planning with a focus on predictable results and a polished patient journey.',
+                images: [
+                    'https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1588776813677-77e54dd67f65?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1600&q=80'
+                ],
+                video: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+                priceRows: [
+                    { item: 'Consultation', range: '$0 - $20' },
+                    { item: 'Whitening', range: '$120 - $250' },
+                    { item: 'Veneer', range: '$250 - $450' },
+                    { item: 'Smile design', range: '$300 - $450' }
+                ],
+                services: ['Veneers', 'Whitening', 'Smile design', 'Shade planning', 'Cosmetic consult'],
+                highlights: ['Smile makeovers and cosmetic planning', 'Ideal for short-stay tourists', 'Comfort-first patient journey', 'Good fit for before-and-after cases']
+            },
+            {
+                slug: 'coastal-smile-center',
+                title: 'Coastal Smile Center',
+                partner: 'Premium Care',
+                spec: 'Invisalign Expert',
+                summary: 'A modern orthodontic option for aligners and bite correction, including digital scans for planning.',
+                description: 'Recommended when you need aligners, bite correction, or a more technical orthodontic consultation. It is a good match for longer treatment journeys because the planning is structured around progress checks and remote coordination.',
+                address: '68 Le Duan, Hai Chau, Da Nang',
+                area: 'Hai Chau, easy taxi access',
+                hours: 'Mon-Sat 08:00-18:00',
+                phone: '+84 236 000 0003',
+                email: 'orthodontics@coastalsmilecenter.vn',
+                doctor: 'Orthodontics lead',
+                languages: 'English, Vietnamese',
+                facilities: '3D scan, aligner planning software, remote follow-up, English support',
+                idealFor: 'Aligners, bite correction, and cases that need follow-up over time.',
+                visitCount: 'Longer-term care',
+                recovery: 'Minimal',
+                rating: '4.9 / 5 patient fit',
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=68+Le+Duan+Hai+Chau+Da+Nang',
+                website: 'coastalsmilecenter.vn',
+                certs: ['3D scan planning', 'Progress review protocol', 'Remote follow-up', 'English consultation'],
+                social: 'AUS/SIN travelers usually want a plan they can follow remotely. That is the point of this workflow.',
+                testimonial: '“The review schedule made it easy to plan around flights without losing treatment continuity.”',
+                testimonialAuthor: 'Patient from Sydney, Australia',
+                testimonials: [
+                    { quote: 'The review schedule worked around my flights without slowing treatment.', author: 'Patient from Sydney' },
+                    { quote: 'Easy to keep track of progress even after leaving Vietnam.', author: 'Patient from Perth' },
+                    { quote: 'Digital scans made each check-in feel efficient.', author: 'Patient from Singapore' }
+                ],
+                trustBio: 'Runs scan-based orthodontic cases with progress review planning for travelers who need flexibility.',
+                images: [
+                    'https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1600&q=80'
+                ],
+                video: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+                priceRows: [
+                    { item: 'Consultation', range: 'Free' },
+                    { item: 'Scan', range: '$40 - $80' },
+                    { item: 'Aligner set', range: '$700 - $900' },
+                    { item: 'Review visit', range: '$25 - $50' }
+                ],
+                services: ['Invisalign', 'Bite correction', '3D scan', 'Retention', 'Progress review'],
+                highlights: ['Aligner-friendly consultation flow', 'Scan-based treatment planning', 'Supports follow-up scheduling', 'Suitable for long-term tourism patients']
+            },
+            {
+                slug: 'oceanview-dental-hub',
+                title: 'Oceanview Dental Hub',
+                partner: 'Modern Tech',
+                spec: 'Digital Dentistry',
+                summary: 'A broad-service clinic with a modern workflow, useful for diagnostics, treatment, and multi-step cases.',
+                description: 'A flexible option for travelers who want a clinic that can handle a wide range of dental needs in one place. The emphasis is on digital workflow, convenience, and an efficient experience for patients balancing treatment with a holiday schedule.',
+                address: '145 Nguyen Van Linh, Thanh Khe, Da Nang',
+                area: 'Thanh Khe, city access corridor',
+                hours: 'Mon-Sun 08:00-20:00',
+                phone: '+84 236 000 0004',
+                email: 'info@oceanviewdentalhub.vn',
+                doctor: 'General dentistry lead',
+                languages: 'English, Vietnamese',
+                facilities: 'Digital imaging, general dentistry, prosthodontics, emergency care',
+                idealFor: 'First-time visitors who want a versatile clinic for diagnosis and treatment.',
+                visitCount: '1 to 2 visits',
+                recovery: 'Depends on case',
+                rating: '4.6 / 5 patient fit',
+                mapUrl: 'https://www.google.com/maps/search/?api=1&query=145+Nguyen+Van+Linh+Thanh+Khe+Da+Nang',
+                website: 'oceanviewdentalhub.vn',
+                certs: ['Digital diagnostics', 'General dentistry', 'Prosthodontics workflow', 'English consultation'],
+                social: 'This is the kind of clinic travelers compare when they want one place for diagnosis, treatment, and follow-up.',
+                testimonial: '“The clinic handled diagnostics quickly and I left with a plan instead of uncertainty.”',
+                testimonialAuthor: 'Patient from Singapore',
+                testimonials: [
+                    { quote: 'Fast diagnostics and a practical treatment plan for a short stay.', author: 'Patient from Singapore' },
+                    { quote: 'Useful when you need one clinic to handle several issues.', author: 'Patient from Jakarta' },
+                    { quote: 'The team moved quickly and stayed organized.', author: 'Patient from Kuala Lumpur' }
+                ],
+                trustBio: 'Coordinates multi-service treatment with digital diagnostics and quick triage for short-stay visitors.',
+                images: [
+                    'https://images.unsplash.com/photo-1629909615184-74f7b8f2f7b9?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1600&q=80',
+                    'https://images.unsplash.com/photo-1609840114035-3c981b782b3d?auto=format&fit=crop&w=1600&q=80'
+                ],
+                video: 'https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4',
+                priceRows: [
+                    { item: 'Consultation', range: '$0 - $15' },
+                    { item: 'X-ray / scan', range: '$20 - $60' },
+                    { item: 'Cleaning', range: '$25 - $50' },
+                    { item: 'Crown', range: '$180 - $350' }
+                ],
+                services: ['Check-up', 'Cleaning', 'Emergency care', 'Digital imaging', 'Prosthodontics'],
+                highlights: ['Multi-service capability', 'Digital workflow and diagnostics', 'Convenient for shorter trips', 'Good starting point for first-time visitors']
+            }
+        ];
+
+        const params = new URLSearchParams(window.location.search);
+        const selectedSlug = params.get('clinic') || clinics[0].slug;
+        const clinic = clinics.find((item) => item.slug === selectedSlug) || clinics[0];
+
+        const el = {
+            title: document.getElementById('detail-title'),
+            partner: document.getElementById('detail-partner'),
+            summary: document.getElementById('detail-summary'),
+            mainImage: document.getElementById('detail-main-image'),
+            imageCaption: document.getElementById('detail-image-caption'),
+            mediaLabel: document.getElementById('detail-media-label'),
+            thumbs: document.getElementById('detail-thumbs'),
+            description: document.getElementById('detail-description'),
+            prices: document.getElementById('detail-prices'),
+            video: document.getElementById('detail-video'),
+            testimonials: document.getElementById('detail-testimonials'),
+            certs: document.getElementById('detail-certs'),
+            cases: document.getElementById('detail-cases'),
+            services: document.getElementById('detail-services'),
+            pdfPricing: document.getElementById('detail-pdf-pricing')
+        };
+
+        const whatsappMessage = `Hi, I am interested in ${clinic.title}. Please share the next steps and pricing.`;
+        const whatsappUrl = buildWhatsAppUrl(whatsappMessage);
+
+        document.title = `${clinic.title} | DentiTrust`;
+        el.partner.textContent = clinic.partner;
+        el.title.textContent = clinic.title;
+        el.summary.textContent = clinic.summary;
+        el.description.textContent = clinic.description;
+        el.services.innerHTML = clinic.services.map((service) => `<li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700">${service}</li>`).join('');
+        el.certs.innerHTML = clinic.certs.map((cert) => `<li class="rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-blue-700">${cert}</li>`).join('');
+        const testimonialItems = clinic.testimonials || (clinic.testimonial ? [{ quote: clinic.testimonial.replace(/^["“]|["”]$/g, ''), author: clinic.testimonialAuthor }] : []);
+        el.testimonials.innerHTML = testimonialItems.map((item) => `
+            <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
+                <p class="text-sm leading-7 text-slate-700">"${item.quote}"</p>
+                <p class="mt-4 text-[10px] font-black uppercase tracking-[0.24em] text-blue-600">${item.author}</p>
+            </article>
+        `).join('');
+        el.pdfPricing.addEventListener('click', () => buildClinicPdf(clinic));
+        const waFab = document.getElementById('detail-wa-fab');
+        waFab.href = whatsappUrl;
+
+        const mediaItems = [
+            {
+                type: 'video',
+                label: 'Clinic tour',
+                caption: clinic.summary,
+                src: clinic.video,
+                thumb: clinic.images[0]
+            },
+            {
+                type: 'image',
+                label: 'Hero view',
+                caption: clinic.summary,
+                src: clinic.images[0],
+                thumb: clinic.images[0]
+            },
+            ...clinic.images.slice(1).map((image, index) => ({
+                type: 'image',
+                label: `Gallery ${index + 2}`,
+                caption: `${clinic.title} image ${index + 2}`,
+                src: image,
+                thumb: image
+            }))
+        ];
+
+        const renderMedia = (item) => {
+            const isVideo = item.type === 'video';
+            el.mainImage.classList.toggle('hidden', isVideo);
+            el.video.classList.toggle('hidden', !isVideo);
+            el.mediaLabel.textContent = item.label;
+            el.imageCaption.textContent = item.caption;
+            if (isVideo) {
+                el.video.src = item.src;
+                el.video.poster = item.thumb;
+                el.video.load();
+                el.video.play().catch(() => {});
+            } else {
+                el.video.pause();
+                el.video.removeAttribute('src');
+                el.video.load();
+                el.mainImage.src = item.src;
+                el.mainImage.alt = `${clinic.title} ${item.label}`;
+            }
+        };
+
+        el.thumbs.innerHTML = mediaItems.map((item, index) => `
+            <button type="button" class="clinic-thumb relative w-full overflow-hidden rounded-[1rem] border border-white/10 bg-slate-800 transition hover:-translate-y-0.5 cursor-pointer snap-start" data-media-index="${index}" aria-label="Preview ${item.label.toLowerCase()}">
+                <img src="${item.thumb}" alt="${clinic.title} ${item.label}" loading="lazy" class="h-20 w-full object-cover transition duration-300 hover:scale-105 lg:h-24">
+                ${item.type === 'video' ? '<span class="absolute inset-0 flex items-center justify-center bg-slate-950/30 text-[10px] font-black uppercase tracking-[0.24em] text-white">Play</span>' : ''}
+            </button>
+        `).join('');
+        const thumbButtons = el.thumbs.querySelectorAll('[data-media-index]');
+        thumbButtons.forEach((button, index) => {
+            if (index === 0) button.classList.add('thumb-active');
+            button.addEventListener('click', () => {
+                const item = mediaItems[Number(button.dataset.mediaIndex)];
+                thumbButtons.forEach((thumb) => thumb.classList.remove('thumb-active'));
+                button.classList.add('thumb-active');
+                renderMedia(item);
+            });
+        });
+        renderMedia(mediaItems[0]);
+
+        el.prices.innerHTML = clinic.priceRows.map((row) => `
+            <div class="flex items-start justify-between gap-4 rounded-[1.25rem] border border-slate-100 bg-slate-50 px-4 py-4">
+                <div>
+                    <p class="text-sm font-bold text-slate-900">${row.item}</p>
+                </div>
+                <span class="text-right text-sm font-black text-slate-700">${row.range}</span>
+            </div>
+        `).join('');
+
+        const caseCards = [
+            {
+                title: 'Case 01',
+                before: clinic.slug === 'east-meets-west-dental' ? clinic.images[1] : clinic.images[0],
+                after: clinic.slug === 'east-meets-west-dental' ? clinic.images[2] || clinic.images[1] : clinic.images[1] || clinic.images[0],
+                note: clinic.idealFor
+            },
+            {
+                title: 'Case 02',
+                before: clinic.slug === 'east-meets-west-dental' ? clinic.images[0] : clinic.images[1] || clinic.images[0],
+                after: clinic.slug === 'east-meets-west-dental' ? clinic.images[1] : clinic.images[2] || clinic.images[0],
+                note: clinic.visitCount + ' with structured follow-up.'
+            }
+        ];
+
+        el.cases.innerHTML = caseCards.map((item) => `
+            <article class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white">
+                <div class="grid grid-cols-2">
+                    <div class="border-r border-slate-200">
+                        <div class="bg-slate-50 px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Before</div>
+                        <img src="${item.before}" alt="${item.title} before" class="h-36 w-full object-cover object-center">
+                    </div>
+                    <div>
+                        <div class="bg-slate-50 px-3 py-2 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">After</div>
+                        <img src="${item.after}" alt="${item.title} after" class="h-36 w-full object-cover object-center">
+                    </div>
+                </div>
+                <div class="p-4">
+                    <p class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">${item.title}</p>
+                    <p class="mt-2 text-sm leading-7 text-slate-700">${item.note}</p>
+                </div>
+            </article>
+        `).join('');
+
+        const buildClinicPdf = (clinic) => {
+            if (!window.jspdf || !window.jspdf.jsPDF) return;
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const pageWidth = doc.internal.pageSize.getWidth();
+            const margin = 14;
+            let y = 18;
+
+            const addText = (text, size = 10, color = [71, 85, 105], gapAfter = 6) => {
+                doc.setFont('helvetica', 'normal');
+                doc.setFontSize(size);
+                doc.setTextColor(color[0], color[1], color[2]);
+                const lines = doc.splitTextToSize(text, pageWidth - margin * 2);
+                doc.text(lines, margin, y);
+                y += lines.length * (size * 0.42) + gapAfter;
+            };
+
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(18);
+            doc.setTextColor(15, 23, 42);
+            doc.text(`${clinic.title} - Full Price Table`, margin, y);
+            y += 10;
+            addText(clinic.address, 10, [71, 85, 105], 4);
+            addText(`Phone: ${clinic.phone}`, 10, [71, 85, 105], 4);
+            addText(`Email: ${clinic.email}`, 10, [71, 85, 105], 4);
+            addText(`Doctor: ${clinic.doctor}`, 10, [71, 85, 105], 4);
+            addText(`Hours: ${clinic.hours}`, 10, [71, 85, 105], 6);
+            doc.setFont('helvetica', 'bold');
+            doc.setFontSize(13);
+            doc.setTextColor(37, 99, 235);
+            doc.text('Price table', margin, y);
+            y += 8;
+            clinic.priceRows.forEach((row) => {
+                doc.setFont('helvetica', 'bold');
+                doc.setFontSize(10);
+                doc.setTextColor(15, 23, 42);
+                doc.text(row.item, margin, y);
+                doc.setFont('helvetica', 'normal');
+                doc.setTextColor(71, 85, 105);
+                const priceWidth = doc.getTextWidth(row.range);
+                doc.text(row.range, pageWidth - margin - priceWidth, y);
+                y += 7;
+            });
+            y += 4;
+            doc.setDrawColor(226, 232, 240);
+            doc.line(margin, y, pageWidth - margin, y);
+            y += 8;
+            addText(`Services: ${clinic.services.join(', ')}`, 9, [71, 85, 105], 4);
+            addText(`Languages: ${clinic.languages}`, 9, [71, 85, 105], 4);
+            addText(`Website: ${clinic.website}`, 9, [71, 85, 105], 4);
+            doc.save(`${clinic.slug}-price-list.pdf`);
+        };
+
+        window.buildClinicPdf = buildClinicPdf;
+        el.bookSide.addEventListener('click', (event) => {
+            event.preventDefault();
+            window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+        });
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+        });
+        document.querySelectorAll('a[href^="index.html#"], a[href="blogs.html"]').forEach((link) => {
+            link.addEventListener('click', () => mobileMenu?.classList.add('hidden'));
+        });
+    </script>
+</body>
+</html>
