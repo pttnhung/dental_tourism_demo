@@ -6,29 +6,79 @@
     <title>Clinic Profile | DentiTrust</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #0f5f9a;
+            --secondary: #e9c95a;
+            --bg-body: #fcfdfe;
+            --bg-section: #f8fbfd;
+            --text-main: #18466f;
+            --dt-primary: var(--primary);
+            --dt-primary-dark: var(--text-main);
+            --dt-bg: var(--bg-body);
+            --dt-surface: #ffffff;
+            --dt-border: #dce4ea;
+            --dt-accent: var(--secondary);
+            --dt-main: var(--text-main);
+            --dt-muted: #627085;
+        }
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 112px;
         }
         body {
+            font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.8;
             background:
-                radial-gradient(circle at top left, rgba(59,130,246,0.12), transparent 34%),
-                radial-gradient(circle at top right, rgba(14,165,233,0.08), transparent 28%),
-                #f8fafc;
+                radial-gradient(circle at 18% 10%, rgba(233,201,90,0.06), transparent 0 14%),
+                radial-gradient(circle at 84% 8%, rgba(15,95,154,0.06), transparent 0 18%),
+                linear-gradient(180deg, #ffffff 0%, #fcfdfe 55%, #f8fbfd 100%);
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
         }
         .detail-shell {
-            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
-            backdrop-filter: blur(12px);
+            background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(245,250,253,0.96));
+            backdrop-filter: blur(14px) saturate(1.02);
+        }
+        .gold-fill {
+            background:
+                linear-gradient(135deg, #f5dd82 0%, #e0bb48 52%, #fff2bf 100%) !important;
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.62),
+                0 8px 18px rgba(224,187,72,0.22);
+        }
+        .gold-text { color: var(--dt-accent) !important; }
+        .gold-border { border-color: rgba(233,201,90,0.42) !important; }
+        .gold-soft { background-color: rgba(233,201,90,0.10) !important; }
+        .btn-luxury {
+            background: var(--primary) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(233,201,90,0.42) !important;
+            box-shadow: 0 14px 30px rgba(15,95,154,0.14);
+            transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .btn-luxury:hover {
+            background: #111111 !important;
+            color: #ffffff !important;
+            border-color: rgba(233,201,90,0.82) !important;
+            box-shadow: 0 16px 36px rgba(15,95,154,0.18);
         }
         .soft-card {
-            box-shadow: 0 25px 70px rgba(15, 23, 42, 0.08);
+            box-shadow: 0 25px 70px rgba(15, 23, 42, 0.09);
         }
         .media-shadow {
-            box-shadow: 0 30px 90px rgba(15, 23, 42, 0.18);
+            box-shadow: 0 30px 90px rgba(15, 23, 42, 0.2);
         }
         .thumb-active {
-            outline: 2px solid rgb(37 99 235);
+            outline: 2px solid rgb(233 201 90);
             outline-offset: 2px;
         }
         .sticky-panel {
@@ -40,13 +90,59 @@
         .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
+        .bg-blue-600 { background-color: var(--dt-primary) !important; }
+        .text-blue-600 { color: var(--dt-primary) !important; }
+        .border-blue-600 { border-color: var(--dt-primary) !important; }
+        .bg-blue-50 { background-color: var(--bg-section) !important; }
+        .bg-blue-100 { background-color: rgba(233,201,90,0.10) !important; }
+        .bg-blue-200 { background-color: rgba(233,201,90,0.16) !important; }
+        .bg-blue-400 { background-color: rgba(15,95,154,0.28) !important; }
+        .bg-blue-500 { background-color: var(--dt-primary) !important; }
+        .bg-slate-50 { background-color: var(--bg-section) !important; }
+        .bg-slate-900 {
+            background:
+                linear-gradient(145deg, #0f5f9a 0%, #1670b4 100%) !important;
+        }
+        .text-blue-100 { color: #ffffff !important; }
+        .text-blue-200 { color: #f8fbfd !important; }
+        .text-blue-300 { color: #dce4ea !important; }
+        .text-blue-500 { color: var(--dt-accent) !important; }
+        .text-blue-700 { color: var(--text-main) !important; }
+        .border-blue-100 { border-color: rgba(15,95,154,0.08) !important; }
+        .border-blue-200 { border-color: rgba(15,95,154,0.12) !important; }
+        .border-blue-400\/30 { border-color: rgba(233,201,90,0.22) !important; }
+        .bg-blue-500\/15 { background-color: rgba(233,201,90,0.12) !important; }
+        .hover\:text-blue-600:hover { color: var(--dt-accent) !important; }
+        .hover\:bg-blue-50:hover { background-color: var(--bg-section) !important; }
+        .hover\:border-blue-200:hover { border-color: var(--dt-accent) !important; }
+        .hover\:bg-blue-700:hover { background-color: var(--text-main) !important; }
+        .shadow-blue-200 { --tw-shadow-color: rgba(15,95,154,0.16) !important; }
+        .shadow-blue-500\/20 { --tw-shadow-color: rgba(224,187,72,0.24) !important; }
+        .ring-blue-600 { --tw-ring-color: rgb(233 201 90) !important; }
+        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(212 177 90) !important; }
+        .text-slate-200 { color: #dce4ea !important; }
+        .text-slate-300 { color: #c7d0da !important; }
+        .text-slate-400 { color: var(--dt-muted) !important; }
+        .text-slate-500 { color: var(--dt-muted) !important; }
+        .text-slate-600 { color: var(--dt-muted) !important; }
+        .text-slate-700 { color: var(--text-main) !important; }
+        .text-slate-800 { color: var(--text-main) !important; }
+        .text-slate-900 { color: var(--text-main) !important; }
+        .text-slate-950 { color: var(--text-main) !important; }
+        .border-slate-100 { border-color: #dce4ea !important; }
+        .border-slate-200 { border-color: #cfdbe5 !important; }
+        .bg-slate-800 { background-color: #1670b4 !important; }
+        .hero-title {
+            line-height: 0.98;
+            text-wrap: balance;
+        }
     </style>
 </head>
-<body class="text-slate-900">
-    <nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-white/85 backdrop-blur-xl">
+<body class="bg-[#fcfdfe] text-slate-900">
+    <nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-[#f8fbfd]/90 backdrop-blur-xl">
         <div class="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-6 md:h-24">
             <a href="index.html" class="flex items-center gap-2 text-2xl font-black tracking-tighter">
-                <span class="h-8 w-8 rounded-lg bg-blue-600 shadow-lg shadow-blue-200"></span>
+                <span class="h-8 w-8 rounded-lg gold-fill shadow-lg shadow-blue-200 ring-1 ring-blue-400/30"></span>
                 DentiTrust
             </a>
             <div class="hidden items-center space-x-10 text-[13px] font-black uppercase tracking-widest md:flex">
@@ -66,13 +162,13 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f8fbfd] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
             <a href="index.html#about" class="py-2">Why Us</a>
             <a href="index.html#price-comparison" class="py-2 border-t border-slate-50">Compare</a>
             <a href="index.html#clinics" class="py-2 border-t border-slate-50">Top Clinics</a>
             <a href="index.html#destinations" class="py-2 border-t border-slate-50">Travel</a>
             <a href="blogs.html" class="py-2 border-t border-slate-50">Blogs</a>
-            <a href="index.html#book-now" class="py-4 bg-blue-600 text-white rounded-xl">Book Now</a>
+            <a href="index.html#book-now" class="py-4 btn-luxury rounded-xl">Book Now</a>
         </div>
     </nav>
 
@@ -88,7 +184,7 @@
                         <h1 id="detail-title" class="mt-4 max-w-3xl text-4xl font-black tracking-tight leading-tight md:text-6xl"></h1>
                         <p id="detail-summary" class="mt-5 max-w-3xl text-base leading-8 text-slate-600 md:text-lg"></p>
 
-                        <div class="mt-6 overflow-hidden rounded-[2rem] border border-slate-100 bg-slate-900 media-shadow">
+        <div class="mt-6 overflow-hidden rounded-[2rem] border border-slate-100 bg-slate-900 media-shadow">
                             <div class="grid gap-0 lg:grid-cols-[1.25fr_0.75fr]">
                                 <div class="bg-slate-900 px-4 pt-4 md:px-5 md:pt-5">
                                     <div class="relative aspect-[4/3] overflow-hidden rounded-[1.25rem] bg-slate-800 md:aspect-[16/10]">
@@ -96,14 +192,14 @@
                                         <video id="detail-video" class="hidden h-full w-full object-cover" controls playsinline preload="metadata" muted></video>
                                         <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                                         <div class="absolute inset-x-0 bottom-0 p-5 md:p-6">
-                                            <p id="detail-media-label" class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-200"></p>
+                                            <p id="detail-media-label" class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-100"></p>
                                             <p id="detail-image-caption" class="mt-2 max-w-2xl text-sm leading-7 text-white/80"></p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="border-t border-white/10 bg-slate-900/95 lg:border-l lg:border-t-0">
                                     <div class="p-4 lg:p-5">
-                                        <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-200">Gallery</p>
+                                        <p class="text-[11px] font-black uppercase tracking-[0.24em] text-blue-100">Gallery</p>
                                     </div>
                                     <div id="detail-thumbs" class="hide-scrollbar flex gap-3 overflow-x-auto px-4 pb-4 snap-x snap-mandatory lg:grid lg:grid-cols-1 lg:gap-4 lg:overflow-visible lg:px-5 lg:pb-5"></div>
                                 </div>
@@ -155,17 +251,10 @@
                         </div>
                     </div>
 
-                    <div class="mt-6">
-                        <section class="rounded-[1.75rem] border border-slate-100 bg-slate-50 p-5 md:p-6">
-                            <div id="detail-cases" class="mt-5 grid gap-4 md:grid-cols-2"></div>
-                        </section>
-                    </div>
+                    <div id="detail-cases" class="mt-6 grid gap-4 md:grid-cols-2"></div>
 
                     <div class="mt-6">
-                        <div class="flex items-center justify-between gap-4">
-                            <p class="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">Patient testimonials</p>
-                            <span class="text-xs font-semibold text-slate-500">Real traveler feedback</span>
-                        </div>
+                        <p class="text-[11px] font-black uppercase tracking-[0.24em] text-slate-500">Patient testimonials</p>
                         <div id="detail-testimonials" class="mt-4 grid gap-4 md:grid-cols-3"></div>
                     </div>
                 </div>
@@ -173,14 +262,14 @@
         </section>
     </main>
 
-    <footer class="border-t border-slate-100 bg-white px-6 py-10">
+    <footer class="border-t border-slate-100 bg-[#fcfdfe] px-6 py-10">
         <div class="mx-auto flex max-w-[1440px] flex-col gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <a href="index.html" class="text-xl font-black tracking-tighter">DENTAL<span class="text-blue-600">TOURISM</span></a>
             <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">Clinic profile page for international patients.</p>
         </div>
     </footer>
 
-    <a id="detail-wa-fab" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl shadow-green-500/30 transition hover:bg-green-600">
+    <a id="detail-wa-fab" href="#" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full btn-luxury text-white transition">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M20.52 3.48A11.8 11.8 0 0 0 12.04 0C5.5 0 .19 5.31.19 11.85c0 2.08.54 4.11 1.56 5.9L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.54 0 11.85-5.31 11.85-11.85 0-3.17-1.23-6.14-3.38-8.43Zm-8.48 18.26h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.8.99 1.02-3.7-.24-.38a9.82 9.82 0 0 1-1.5-5.21C2.14 6.52 6.5 2.16 12.05 2.16c2.62 0 5.08 1.02 6.93 2.86a9.72 9.72 0 0 1 2.86 6.9c0 5.55-4.36 9.82-9.8 9.82Zm5.7-7.42c-.31-.15-1.84-.9-2.12-1-.28-.1-.48-.15-.68.15-.2.3-.78 1-.96 1.2-.18.2-.35.23-.66.08-.31-.15-1.31-.48-2.5-1.53-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.47.13-.62.13-.13.31-.35.46-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.48-.5-.66-.51h-.56c-.2 0-.53.08-.8.38-.27.3-1.03 1-1.03 2.43s1.05 2.81 1.2 3c.15.2 2.07 3.16 5.01 4.43.7.3 1.24.48 1.67.62.7.22 1.33.19 1.83.12.56-.08 1.84-.75 2.1-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35Z"/>
         </svg>
@@ -414,7 +503,7 @@
         el.summary.textContent = clinic.summary;
         el.description.textContent = clinic.description;
         el.services.innerHTML = clinic.services.map((service) => `<li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700">${service}</li>`).join('');
-        el.certs.innerHTML = clinic.certs.map((cert) => `<li class="rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-blue-700">${cert}</li>`).join('');
+        el.certs.innerHTML = clinic.certs.map((cert) => `<li class="rounded-full border border-blue-100 bg-[#f8fbfd] px-4 py-2 text-sm font-semibold text-blue-700">${cert}</li>`).join('');
         const testimonialItems = clinic.testimonials || (clinic.testimonial ? [{ quote: clinic.testimonial.replace(/^["“]|["”]$/g, ''), author: clinic.testimonialAuthor }] : []);
         el.testimonials.innerHTML = testimonialItems.map((item) => `
             <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">
@@ -508,7 +597,7 @@
                 title: 'Case 02',
                 before: clinic.slug === 'east-meets-west-dental' ? clinic.images[0] : clinic.images[1] || clinic.images[0],
                 after: clinic.slug === 'east-meets-west-dental' ? clinic.images[1] : clinic.images[2] || clinic.images[0],
-                note: clinic.visitCount + ' with structured follow-up.'
+                note: 'A clearer result with a simpler treatment plan.'
             }
         ];
 

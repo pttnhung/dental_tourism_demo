@@ -5,27 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blogs | DentiTrust</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
+        :root {
+            --primary: #0f5f9a;
+            --secondary: #e9c95a;
+            --bg-body: #fcfdfe;
+            --bg-section: #f8fbfd;
+            --text-main: #18466f;
+            --dt-primary: var(--primary);
+            --dt-primary-dark: var(--text-main);
+            --dt-bg: var(--bg-body);
+            --dt-surface: #ffffff;
+            --dt-border: #dce4ea;
+            --dt-accent: var(--secondary);
+            --dt-main: var(--text-main);
+            --dt-muted: #627085;
+        }
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 112px;
         }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
-        .hero-gradient { background: radial-gradient(circle at top right, #eff6ff, #ffffff); }
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.8;
+            background:
+                radial-gradient(circle at 18% 10%, rgba(233,201,90,0.06), transparent 0 14%),
+                radial-gradient(circle at 84% 8%, rgba(15,95,154,0.06), transparent 0 18%),
+                linear-gradient(180deg, #ffffff 0%, #fcfdfe 55%, #f8fbfd 100%);
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+        }
+        .glass { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px) saturate(1.02); border-color: rgba(233,201,90,0.10); }
+        .hero-gradient {
+            background:
+                radial-gradient(circle at 16% 18%, rgba(216,178,76,0.08), transparent 0 16%),
+                radial-gradient(circle at 86% 16%, rgba(255,255,255,0.05), transparent 0 18%),
+                linear-gradient(135deg, #071a2e 0%, #0d2f52 46%, #123d66 100%);
+        }
         section { scroll-margin-top: 112px; }
         .blog-card img { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .blog-card:hover img { transform: scale(1.08); }
-        .editorial-glow {
-            background: radial-gradient(circle at top, rgba(59,130,246,0.10), transparent 55%);
+        .gold-fill { background: linear-gradient(135deg, #f5dd82 0%, #e0bb48 52%, #fff2bf 100%) !important; }
+        .gold-text { color: var(--dt-accent) !important; }
+        .gold-border { border-color: rgba(233,201,90,0.45) !important; }
+        .gold-soft { background-color: rgba(233,201,90,0.12) !important; }
+        .btn-luxury {
+            background: var(--primary) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(233,201,90,0.42) !important;
+            box-shadow: 0 14px 30px rgba(15,95,154,0.14);
+            transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
         }
+        .btn-luxury:hover {
+            background: #111111 !important;
+            color: #ffffff !important;
+            border-color: rgba(233,201,90,0.82) !important;
+            box-shadow: 0 16px 36px rgba(15,95,154,0.18);
+        }
+        .editorial-glow { background: radial-gradient(circle at top, rgba(233,201,90,0.07), transparent 55%); }
         .article-prose p { margin-top: 1.15rem; }
         .article-prose p:first-child {
             margin-top: 0;
             padding-left: 1rem;
-            border-left: 4px solid rgb(37 99 235);
-            color: rgb(15 23 42);
+            border-left: 4px solid rgb(223 192 79);
+            color: var(--text-main);
             font-size: 1.125rem;
             line-height: 1.9;
         }
@@ -34,16 +87,59 @@
         }
         .blog-article-shell {
             background:
-                radial-gradient(circle at top left, rgba(59,130,246,0.08), transparent 30%),
-                linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.98));
+                radial-gradient(circle at top left, rgba(15,95,154,0.06), transparent 30%),
+                linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,251,253,0.98));
+        }
+        .bg-blue-600 { background-color: var(--dt-primary) !important; }
+        .text-blue-600 { color: var(--dt-primary) !important; }
+        .border-blue-600 { border-color: var(--dt-primary) !important; }
+        .bg-blue-50 { background-color: var(--bg-section) !important; }
+        .bg-blue-100 { background-color: rgba(212,177,90,0.10) !important; }
+        .bg-blue-200 { background-color: rgba(212,177,90,0.16) !important; }
+        .bg-blue-400 { background-color: rgba(15,95,154,0.28) !important; }
+        .bg-blue-500 { background-color: var(--dt-primary) !important; }
+        .bg-slate-50 { background-color: var(--bg-section) !important; }
+        .bg-slate-900 { background: linear-gradient(145deg, #0f5f9a 0%, #1670b4 100%) !important; }
+        .text-blue-100 { color: #ffffff !important; }
+        .text-blue-200 { color: #f8fbfd !important; }
+        .text-blue-300 { color: #dce4ea !important; }
+        .text-blue-500 { color: var(--dt-accent) !important; }
+        .text-blue-700 { color: var(--text-main) !important; }
+        .border-blue-100 { border-color: rgba(15,95,154,0.08) !important; }
+        .border-blue-200 { border-color: rgba(15,95,154,0.12) !important; }
+        .border-blue-400\/30 { border-color: rgba(212,177,90,0.22) !important; }
+        .bg-blue-500\/15 { background-color: rgba(212,177,90,0.12) !important; }
+        .hover\:text-blue-600:hover { color: var(--dt-accent) !important; }
+        .hover\:bg-blue-50:hover { background-color: var(--bg-section) !important; }
+        .hover\:border-blue-200:hover { border-color: var(--dt-accent) !important; }
+        .hover\:bg-blue-700:hover { background-color: var(--text-main) !important; }
+        .shadow-blue-200 { --tw-shadow-color: rgba(15,95,154,0.16) !important; }
+        .shadow-blue-500\/20 { --tw-shadow-color: rgba(224,187,72,0.20) !important; }
+        .ring-blue-600 { --tw-ring-color: rgb(212 177 90) !important; }
+        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(212 177 90) !important; }
+        .text-slate-200 { color: #dce4ea !important; }
+        .text-slate-300 { color: #c7d0da !important; }
+        .text-slate-400 { color: var(--dt-muted) !important; }
+        .text-slate-500 { color: var(--dt-muted) !important; }
+        .text-slate-600 { color: var(--dt-muted) !important; }
+        .text-slate-700 { color: var(--text-main) !important; }
+        .text-slate-800 { color: var(--text-main) !important; }
+        .text-slate-900 { color: var(--text-main) !important; }
+        .text-slate-950 { color: var(--text-main) !important; }
+        .border-slate-100 { border-color: #dce4ea !important; }
+        .border-slate-200 { border-color: #cfdbe5 !important; }
+        .bg-slate-800 { background-color: #1670b4 !important; }
+        .hero-title {
+            line-height: 0.98;
+            text-wrap: balance;
         }
     </style>
 </head>
-<body class="bg-white text-slate-900 font-sans leading-relaxed overflow-x-hidden">
+<body class="bg-[#fcfdfe] text-slate-900 leading-relaxed overflow-x-hidden">
     <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
         <div class="max-w-[1440px] mx-auto px-6 h-20 md:h-24 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-black tracking-tighter flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-lg shadow-blue-200"></div>
+                <div class="w-8 h-8 gold-fill rounded-lg shadow-lg shadow-blue-200 ring-1 ring-blue-400/30"></div>
                 DentiTrust
             </a>
             <div class="hidden md:flex items-center space-x-10 text-[13px] font-black uppercase tracking-widest">
@@ -63,36 +159,36 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f8fbfd] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
             <a href="index.html#about" class="py-2">Why Us</a>
             <a href="index.html#price-comparison" class="py-2 border-t border-slate-50">Compare</a>
             <a href="index.html#clinics" class="py-2 border-t border-slate-50">Top Clinics</a>
             <a href="index.html#destinations" class="py-2 border-t border-slate-50">Travel</a>
             <a href="blogs.html" class="py-2 border-t border-slate-50">Blogs</a>
-            <a href="index.html#book-now" class="py-4 bg-blue-600 text-white rounded-xl">Book Now</a>
+            <a href="index.html#book-now" class="py-4 btn-luxury rounded-xl">Book Now</a>
         </div>
     </nav>
 
-    <section class="hero-gradient pt-32 md:pt-40 pb-16 md:pb-20 px-6">
-        <div class="max-w-[1440px] mx-auto" data-aos="fade-up">
-            <p class="text-blue-600 font-bold tracking-[0.2em] uppercase text-sm mb-4">DentiTrust Blog</p>
-            <h1 class="text-4xl sm:text-6xl md:text-[78px] font-black tracking-tighter mb-6 leading-[1.02] text-slate-950 max-w-4xl">
-                Guides for
-                <span class="text-blue-600">travel + treatment.</span>
+    <section class="hero-gradient pt-36 md:pt-44 pb-20 md:pb-24 px-6">
+        <div class="max-w-[1440px] mx-auto text-center" data-aos="fade-up">
+            <p class="text-white/80 font-bold tracking-[0.2em] uppercase text-sm mb-4">DentiTrust Blog</p>
+            <h1 class="hero-title text-4xl sm:text-6xl md:text-[84px] font-black tracking-[-0.04em] mb-6 text-slate-950 max-w-4xl mx-auto">
+                <span class="block text-white">Guides for</span>
+                <span class="block mt-3 text-white">travel + <span class="gold-text">treatment.</span></span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-500 max-w-2xl font-medium mb-8">
+            <p class="text-lg md:text-xl text-slate-200/90 max-w-2xl mx-auto font-medium mb-10">
                 Practical editorial notes for patients planning dental care in Da Nang.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4">
-                <a href="#posts" class="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-2xl shadow-blue-200">Explore Blogs</a>
-                <a href="index.html" class="px-10 py-5 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-colors">Back to Home</a>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#posts" class="px-10 py-5 btn-luxury rounded-2xl font-bold text-lg hover:scale-105 transition-transform">Explore Blogs</a>
+                <a href="index.html" class="px-10 py-5 bg-white/95 backdrop-blur border border-white/35 text-slate-900 rounded-2xl font-bold text-lg hover:bg-white transition-colors">Back to Home</a>
             </div>
         </div>
     </section>
 
     <section id="posts" class="py-24 md:py-32 px-6 bg-slate-50">
         <div class="max-w-[1440px] mx-auto">
-            <div class="mb-16 border-l-4 border-blue-600 pl-6">
+            <div class="mb-16 border-l-4 gold-border pl-6">
                 <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-2 uppercase tracking-tighter">Latest Guides</h2>
                 <p class="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">Static blog collection</p>
             </div>

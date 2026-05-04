@@ -5,18 +5,162 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DentiTrust | Premier Dental Concierge</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
+        :root {
+            --primary: #0d2f52;
+            --secondary: #d8b24c;
+            --bg-body: #fdfefe;
+            --bg-section: #f4f9fc;
+            --text-main: #163a5c;
+            --dt-primary: var(--primary);
+            --dt-primary-dark: var(--text-main);
+            --dt-bg: var(--bg-body);
+            --dt-surface: #ffffff;
+            --dt-border: #dce4ea;
+            --dt-accent: var(--secondary);
+            --dt-main: var(--text-main);
+            --dt-muted: #667892;
+        }
         html {
             scroll-behavior: smooth;
             scroll-padding-top: 112px;
         }
-        .glass { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(12px); }
-        .hero-gradient { background: radial-gradient(circle at top right, #eff6ff, #ffffff); }
+        body {
+            font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            line-height: 1.8;
+            background:
+                radial-gradient(circle at 18% 10%, rgba(216,178,76,0.03), transparent 0 14%),
+                radial-gradient(circle at 84% 8%, rgba(13,47,82,0.04), transparent 0 18%),
+                linear-gradient(180deg, #ffffff 0%, #fbfbfb 58%, #f7f4ed 100%);
+        }
+        h1, h2, h3 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-main);
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px) saturate(1.02);
+            border-color: rgba(216,178,76,0.10);
+            box-shadow: 0 14px 36px rgba(14, 26, 49, 0.05);
+        }
+        .hero-gradient {
+            background:
+                radial-gradient(circle at 16% 18%, rgba(216,178,76,0.08), transparent 0 16%),
+                radial-gradient(circle at 86% 16%, rgba(255,255,255,0.05), transparent 0 18%),
+                linear-gradient(135deg, #071a2e 0%, #0d2f52 46%, #123d66 100%);
+        }
         section { scroll-margin-top: 112px; }
-        .media-card { background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(248,250,252,0.9)); }
+        .media-card { background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(251,251,249,0.95)); }
+        .gold-fill {
+            background:
+                linear-gradient(135deg, #f6e08e 0%, #d8b24c 52%, #fff6cf 100%) !important;
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.62),
+                0 8px 18px rgba(216,178,76,0.20);
+        }
+        .gold-text { color: var(--dt-accent) !important; }
+        .gold-border { border-color: rgba(216,178,76,0.42) !important; }
+        .gold-soft { background-color: rgba(216,178,76,0.10) !important; }
+        .btn-luxury {
+            background: var(--primary) !important;
+            color: #ffffff !important;
+            border: 1px solid rgba(216,178,76,0.42) !important;
+            box-shadow: 0 14px 30px rgba(13,47,82,0.12);
+            transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .btn-luxury:hover {
+            background: #111111 !important;
+            color: #ffffff !important;
+            border-color: rgba(216,178,76,0.82) !important;
+            box-shadow: 0 16px 36px rgba(13,47,82,0.16);
+        }
+        .bg-blue-600 { background-color: var(--dt-primary) !important; }
+        .text-blue-600 { color: var(--dt-primary) !important; }
+        .border-blue-600 { border-color: var(--dt-primary) !important; }
+        .bg-blue-50 { background-color: var(--bg-section) !important; }
+        .bg-blue-100 { background-color: rgba(233,201,90,0.10) !important; }
+        .bg-blue-200 { background-color: rgba(233,201,90,0.16) !important; }
+        .bg-blue-300 { background-color: rgba(13,47,82,0.10) !important; }
+        .bg-blue-400 { background-color: rgba(13,47,82,0.28) !important; }
+        .bg-blue-500 { background-color: var(--dt-primary) !important; }
+        .text-blue-100 { color: #ffffff !important; }
+        .text-blue-200 { color: #f9fafb !important; }
+        .text-blue-300 { color: #d9e1e8 !important; }
+        .text-blue-500 { color: var(--dt-accent) !important; }
+        .text-blue-700 { color: var(--text-main) !important; }
+        .border-blue-100 { border-color: rgba(13,47,82,0.08) !important; }
+        .border-blue-200 { border-color: rgba(13,47,82,0.12) !important; }
+        .border-blue-400\/30 { border-color: rgba(216,178,76,0.20) !important; }
+        .border-slate-100 { border-color: #dde4ea !important; }
+        .bg-slate-50 { background-color: var(--bg-section) !important; }
+        .bg-slate-950 {
+            background:
+                radial-gradient(circle at top right, rgba(216,178,76,0.04), transparent 0 22%),
+                linear-gradient(145deg, #0d2f52 0%, #103c67 48%, #16507f 100%) !important;
+        }
+        .bg-blue-500\/15 { background-color: rgba(216,178,76,0.10) !important; }
+        .shadow-blue-200 { --tw-shadow-color: rgba(13,47,82,0.14) !important; }
+        .shadow-blue-500\/20 { --tw-shadow-color: rgba(216,178,76,0.20) !important; }
+        .ring-blue-600 { --tw-ring-color: rgb(216 178 76) !important; }
+        .hover\:text-blue-600:hover { color: var(--dt-accent) !important; }
+        .hover\:bg-blue-50:hover { background-color: var(--bg-section) !important; }
+        .hover\:border-blue-200:hover { border-color: var(--dt-accent) !important; }
+        .hover\:bg-blue-700:hover { background-color: #111111 !important; }
+        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(216 178 76) !important; }
+        .text-slate-200 { color: #d9e1e8 !important; }
+        .text-slate-300 { color: #c7d0da !important; }
+        .text-slate-400 { color: var(--dt-muted) !important; }
+        .bg-slate-900 {
+            background:
+                linear-gradient(145deg, #0d2f52 0%, #103c67 100%) !important;
+        }
+        .text-slate-500 { color: var(--dt-muted) !important; }
+        .text-slate-600 { color: var(--dt-muted) !important; }
+        .text-slate-700 { color: var(--text-main) !important; }
+        .text-slate-800 { color: var(--text-main) !important; }
+        .text-slate-900 { color: var(--text-main) !important; }
+        .text-slate-950 { color: var(--text-main) !important; }
+        .border-slate-100 { border-color: #dde4ea !important; }
+        .border-slate-200 { border-color: #d2dbe3 !important; }
+        .bg-slate-800 { background-color: #103c67 !important; }
+        .hero-title {
+            line-height: 0.98;
+            text-wrap: balance;
+        }
+        .dark-panel,
+        .dark-panel h1,
+        .dark-panel h2,
+        .dark-panel h3,
+        .dark-panel h4,
+        .dark-panel p,
+        .dark-panel li,
+        .dark-panel label,
+        .dark-panel svg {
+            color: #ffffff !important;
+        }
+        .dark-panel .text-slate-300,
+        .dark-panel .text-slate-400,
+        .dark-panel .text-slate-500,
+        .dark-panel .text-slate-600 {
+            color: #dce4ea !important;
+        }
+        .dark-panel .text-blue-100,
+        .dark-panel .text-blue-200,
+        .dark-panel .text-blue-300 {
+            color: #e9c95a !important;
+        }
+        .dark-panel .gold-text {
+            color: var(--dt-accent) !important;
+        }
         
         /* Đảm bảo chiều cao card đồng nhất */
         .clinic-title {
@@ -29,20 +173,18 @@
         /* Hiệu ứng zoom ảnh nhẹ nhàng */
         .dest-card img { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .dest-card:hover img { transform: scale(1.1); }
-        .clinic-photo {
-            box-shadow: 0 24px 60px rgba(15, 23, 42, 0.18);
-        }
+        .clinic-photo { box-shadow: 0 24px 60px rgba(0, 119, 182, 0.10); }
         .modal-open {
             overflow: hidden;
         }
     </style>
 </head>
-<body class="bg-white text-slate-900 font-sans leading-relaxed overflow-x-hidden">
+<body class="bg-[#fdfefe] text-slate-900 leading-relaxed overflow-x-hidden">
 
     <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
         <div class="max-w-[1440px] mx-auto px-6 h-20 md:h-24 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-black tracking-tighter flex items-center gap-2">
-                <div class="w-8 h-8 bg-blue-600 rounded-lg shadow-lg shadow-blue-200"></div>
+                <div class="w-8 h-8 gold-fill rounded-lg shadow-lg shadow-blue-200 ring-1 ring-blue-400/30"></div>
                 DentiTrust
             </a>
             
@@ -64,30 +206,30 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f4f9fc] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
             <a href="#about" class="py-2">Why Us</a>
             <a href="#price-comparison" class="py-2 border-t border-slate-50">Compare</a>
             <a href="#clinics" class="py-2 border-t border-slate-50">Top Clinics</a>
             <a href="#destinations" class="py-2 border-t border-slate-50">Travel</a>
             <a href="blogs.html" class="py-2 border-t border-slate-50">Blogs</a>
-            <a href="#book-now" class="py-4 bg-blue-600 text-white rounded-xl">Book Now</a>
+            <a href="#book-now" class="py-4 btn-luxury rounded-xl">Book Now</a>
         </div>
     </nav>
 
     <section class="hero-gradient pt-40 md:pt-56 pb-24 md:pb-32 px-6">
         <div class="max-w-[1440px] mx-auto text-center" data-aos="fade-up">
-            <h1 class="text-4xl sm:text-6xl md:text-[84px] font-black tracking-tighter mb-8 leading-[1.05] text-slate-950">
-                Expert Dental Care. <br class="hidden md:block">
-                <span class="text-blue-600">Designed for Travel.</span>
+            <h1 class="hero-title text-4xl sm:text-6xl md:text-[84px] font-black tracking-[-0.04em] mb-8 text-slate-950">
+                <span class="block text-white">Expert Dental Care.</span>
+                <span class="block mt-3 text-white">Designed for <span class="gold-text">Travel.</span></span>
             </h1>
-            <p class="text-lg md:text-xl text-slate-500 max-w-2xl mx-auto mb-12 font-medium">
+            <p class="text-lg md:text-xl text-slate-200/90 max-w-2xl mx-auto mb-12 font-medium">
                 Premium care in Da Nang. We connect international patients with JCI-standard clinics and 24/7 concierge support.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#book-now" class="px-10 py-5 bg-blue-600 text-white rounded-2xl font-bold text-lg hover:scale-105 transition-transform shadow-2xl shadow-blue-200">Send Your Request</a>
-                <button id="hero-wa-open" type="button" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="px-10 py-5 bg-white border border-slate-200 text-slate-900 rounded-2xl font-bold text-lg hover:bg-slate-50 transition-colors inline-flex items-center gap-2">
+                <a href="#book-now" class="px-10 py-5 btn-luxury rounded-2xl font-bold text-lg hover:scale-105 transition-transform">Send Your Request</a>
+                <button id="hero-wa-open" type="button" aria-label="Chat on WhatsApp" title="Chat on WhatsApp" class="px-10 py-5 bg-white/95 backdrop-blur border border-white/35 text-slate-900 rounded-2xl font-bold text-lg hover:bg-white transition-colors inline-flex items-center gap-2">
                     <span>Chat Now</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-green-500" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-blue-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                         <path d="M20.52 3.48A11.8 11.8 0 0 0 12.04 0C5.5 0 .19 5.31.19 11.85c0 2.08.54 4.11 1.56 5.9L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.54 0 11.85-5.31 11.85-11.85 0-3.17-1.23-6.14-3.38-8.43Zm-8.48 18.26h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.8.99 1.02-3.7-.24-.38a9.82 9.82 0 0 1-1.5-5.21C2.14 6.52 6.5 2.16 12.05 2.16c2.62 0 5.08 1.02 6.93 2.86a9.72 9.72 0 0 1 2.86 6.9c0 5.55-4.36 9.82-9.8 9.82Zm5.7-7.42c-.31-.15-1.84-.9-2.12-1-.28-.1-.48-.15-.68.15-.2.3-.78 1-.96 1.2-.18.2-.35.23-.66.08-.31-.15-1.31-.48-2.5-1.53-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.47.13-.62.13-.13.31-.35.46-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.48-.5-.66-.51h-.56c-.2 0-.53.08-.8.38-.27.3-1.03 1-1.03 2.43s1.05 2.81 1.2 3c.15.2 2.07 3.16 5.01 4.43.7.3 1.24.48 1.67.62.7.22 1.33.19 1.83.12.56-.08 1.84-.75 2.1-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35Z"/>
                     </svg>
                 </button>
@@ -97,19 +239,17 @@
 
     <section id="price-comparison" class="px-6 pb-24 md:pb-32">
         <div class="max-w-[1440px] mx-auto">
-            <div class="relative overflow-hidden rounded-[3rem] border border-slate-100 bg-slate-950 text-white shadow-[0_30px_80px_rgba(15,23,42,0.16)]">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.24),transparent_40%),radial-gradient(circle_at_bottom_left,rgba(14,165,233,0.18),transparent_32%)] pointer-events-none"></div>
-                <div class="relative z-10 grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
-                    <div class="p-8 md:p-12">
-                        <p class="text-[11px] font-black uppercase tracking-[0.3em] text-blue-200">Price comparison</p>
-                        <h2 class="mt-4 text-3xl md:text-5xl font-black tracking-tight leading-tight">See the savings in one screen.</h2>
-                        <p class="mt-5 max-w-2xl text-base md:text-lg text-slate-300">Choose two simple options and see an estimate right away.</p>
+            <div class="overflow-hidden rounded-[3rem] border border-slate-100 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+                <div class="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
+                    <div class="bg-gradient-to-br from-[#0d2f52] via-[#103c67] to-[#16507f] p-8 md:p-12 text-white">
+                        <p class="text-[11px] font-black uppercase tracking-[0.3em] text-[#e9c95a]">Price comparison</p>
+                        <h2 class="mt-4 max-w-xl text-3xl md:text-5xl font-black tracking-tight leading-[1.02] text-white">See the savings in one screen.</h2>
 
-                        <div class="mt-8 space-y-4 rounded-[2rem] border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
-                            <div class="rounded-[1.5rem] border border-white/10 bg-white p-4 text-slate-900 shadow-sm">
-                                <label for="comparison-origin" class="text-xs font-bold text-slate-500 uppercase ml-2">From</label>
+                        <div class="mt-8 space-y-4 rounded-[2rem] border border-white/10 bg-white/10 p-5 backdrop-blur-sm">
+                            <div class="rounded-[1.5rem] border border-white/10 bg-[#f5f9fc] p-4 text-slate-900 shadow-sm">
+                                <label for="comparison-origin" class="text-xs font-black uppercase tracking-[0.18em] text-[#667892] ml-2">From</label>
                                 <div class="relative mt-1">
-                                    <select id="comparison-origin" class="w-full appearance-none p-4 pr-12 bg-white rounded-2xl border border-slate-200 shadow-sm focus:ring-2 focus:ring-blue-600 outline-none text-slate-900">
+                                    <select id="comparison-origin" class="w-full appearance-none p-4 pr-12 rounded-2xl border border-[#d8e3ec] bg-white shadow-sm outline-none text-slate-900 focus:ring-2 focus:ring-blue-600">
                                         <option value="aus">Australia</option>
                                         <option value="sin">Singapore</option>
                                         <option value="kor">South Korea</option>
@@ -117,27 +257,27 @@
                                         <option value="chn">China</option>
                                         <option value="usa">USA</option>
                                     </select>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a1 1 0 0 1 1.4.02L10 10.67l3.37-3.44a1 1 0 1 1 1.43 1.4l-4.08 4.16a1 1 0 0 1-1.42 0L5.21 8.63a1 1 0 0 1 .02-1.42Z" clip-rule="evenodd" /></svg>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a1 1 0 0 1 1.4.02L10 10.67l3.37-3.44a1 1 0 1 1 1.43 1.4l-4.08 4.16a1 1 0 0 1-1.42 0L5.21 8.63a1 1 0 0 1 .02-1.42Z" clip-rule="evenodd" /></svg>
                                 </div>
                             </div>
-                        <div class="rounded-[1.5rem] border border-white/10 bg-white p-4 text-slate-900 shadow-sm">
-                            <label for="comparison-treatment" class="text-xs font-bold text-slate-500 uppercase ml-2">Treatment</label>
-                            <div class="relative mt-1">
-                                <select id="comparison-treatment" class="w-full appearance-none p-4 pr-12 bg-white rounded-2xl border border-slate-200 shadow-sm focus:ring-2 focus:ring-blue-600 outline-none text-slate-900"></select>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a1 1 0 0 1 1.4.02L10 10.67l3.37-3.44a1 1 0 1 1 1.43 1.4l-4.08 4.16a1 1 0 0 1-1.42 0L5.21 8.63a1 1 0 0 1 .02-1.42Z" clip-rule="evenodd" /></svg>
+                            <div class="rounded-[1.5rem] border border-white/10 bg-[#f5f9fc] p-4 text-slate-900 shadow-sm">
+                                <label for="comparison-treatment" class="text-xs font-black uppercase tracking-[0.18em] text-[#667892] ml-2">Treatment</label>
+                                <div class="relative mt-1">
+                                    <select id="comparison-treatment" class="w-full appearance-none p-4 pr-12 rounded-2xl border border-[#d8e3ec] bg-white shadow-sm outline-none text-slate-900 focus:ring-2 focus:ring-blue-600"></select>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a1 1 0 0 1 1.4.02L10 10.67l3.37-3.44a1 1 0 1 1 1.43 1.4l-4.08 4.16a1 1 0 0 1-1.42 0L5.21 8.63a1 1 0 0 1 .02-1.42Z" clip-rule="evenodd" /></svg>
+                                </div>
                             </div>
-                        </div>
                         </div>
                     </div>
 
-                    <div class="border-t border-white/10 p-8 md:p-12 lg:border-t-0 lg:border-l">
-                        <div class="h-full rounded-[2rem] border border-blue-400/30 bg-blue-500/15 p-6 md:p-8">
-                            <p class="text-[11px] font-black uppercase tracking-[0.25em] text-blue-200">Estimated savings</p>
+                    <div class="bg-[#fdfefe] p-8 md:p-12 lg:border-l lg:border-[#d8e3ec]">
+                        <div class="h-full rounded-[2rem] border border-[#e9c95a] bg-white p-6 md:p-8 shadow-[0_20px_50px_rgba(15,95,154,0.08)]">
+                            <p class="text-[11px] font-black uppercase tracking-[0.25em] gold-text">Estimated savings</p>
                             <div class="mt-4 flex items-end gap-2">
-                                <span class="text-5xl font-black tracking-tight" id="comparison-savings">$0</span>
-                                <span class="pb-1 text-sm font-semibold text-blue-100">USD</span>
+                                <span class="text-5xl font-black tracking-tight text-slate-950" id="comparison-savings">$0</span>
+                                <span class="pb-1 text-sm font-bold text-slate-600">USD</span>
                             </div>
-                            <p class="mt-4 text-sm leading-7 text-blue-100/90" id="comparison-summary">Choose a treatment to compare.</p>
+                            <p class="mt-4 text-sm leading-7 text-slate-600" id="comparison-summary">Choose a treatment to compare.</p>
                         </div>
                     </div>
                 </div>
@@ -148,25 +288,25 @@
     <section id="about" class="py-24 md:py-32 px-6 bg-slate-50">
         <div class="max-w-[1440px] mx-auto">
             <div class="mb-20 text-center" data-aos="fade-up">
-                <h2 class="text-blue-600 font-bold tracking-[0.2em] mb-4 uppercase text-sm">The Platform Advantage</h2>
+                <h2 class="gold-text font-bold tracking-[0.2em] mb-4 uppercase text-sm">The Platform Advantage</h2>
                 <h3 class="text-3xl md:text-5xl font-black">Why smart travelers choose us.</h3>
             </div>
             <div class="grid md:grid-cols-3 gap-8">
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 bg-blue-50 gold-text rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                     </div>
                     <h4 class="text-2xl font-bold mb-4">Top-Tier Vetting</h4>
                     <p class="text-slate-500 font-medium">Only clinics with international certifications and 10+ years of dental excellence are permitted.</p>
                 </div>
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                     </div>
                     <h4 class="text-2xl font-bold mb-4">Local Concierge</h4>
                     <p class="text-slate-500 font-medium">A dedicated human assistant for your entire trip: from airport pickup to in-clinic translation.</p>
                 </div>
-                <div class="bg-white p-10 rounded-[2.5rem] shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="300">
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
@@ -179,7 +319,7 @@
 
     <section id="clinics" class="py-24 md:py-32 px-6">
         <div class="max-w-[1440px] mx-auto">
-            <div class="mb-16 border-l-4 border-blue-600 pl-6">
+                <div class="mb-16 border-l-4 gold-border pl-6">
                 <h2 class="text-3xl md:text-5xl font-black text-slate-900 mb-2 uppercase tracking-tighter">Verified Partners</h2>
                 <p class="text-slate-400 font-bold uppercase tracking-[0.2em] text-xs">Top Rated Clinics in Da Nang</p>
             </div>
@@ -191,7 +331,7 @@
         <div class="max-w-[1440px] mx-auto">
             <div class="mb-16 text-center" data-aos="fade-up">
                 <h2 class="text-3xl md:text-5xl font-black mb-4">Explore Da Nang</h2>
-                <p class="text-slate-500 font-medium max-w-xl mx-auto italic text-sm">"Beautiful spots near our partner clinics for your perfect recovery holiday."</p>
+                <p class="text-slate-500 font-medium max-w-xl mx-auto italic text-sm">Beautiful spots near our partner clinics for a softer recovery schedule.</p>
             </div>
             
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -229,41 +369,40 @@
 
     <section id="book-now" class="py-28 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="rounded-[3rem] bg-white border border-slate-100 shadow-[0_30px_80px_rgba(15,23,42,0.08)] overflow-hidden relative">
-                <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-slate-50 pointer-events-none"></div>
-                <div class="relative z-10 grid lg:grid-cols-5 gap-0">
-                    <div class="lg:col-span-2 p-10 md:p-14 bg-slate-900 text-white">
-                        <p class="text-blue-300 font-bold tracking-[0.2em] text-xs mb-4">BOOKING SUPPORT</p>
-                        <h2 class="text-3xl md:text-4xl font-black mb-5 leading-tight">Dental Advice. Booking Support.</h2>
-                        <div class="space-y-4 text-sm text-slate-300">
+            <div class="overflow-hidden rounded-[3rem] border border-slate-100 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
+                <div class="grid lg:grid-cols-[0.78fr_1.22fr]">
+                    <div class="bg-[#0d2f52] p-10 md:p-14 text-white">
+                        <p class="text-[11px] font-black uppercase tracking-[0.22em] text-[#e9c95a] mb-4">BOOKING SUPPORT</p>
+                        <h2 class="text-3xl md:text-4xl font-black mb-5 leading-tight text-white">Dental Advice. Booking Support.</h2>
+                        <div class="space-y-4 text-sm text-white/80">
                             <div class="flex gap-3">
-                                <span class="mt-1 w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                                <span class="mt-1 w-2 h-2 rounded-full bg-[#e9c95a] flex-shrink-0"></span>
                                 <p>Tell us what treatment you need.</p>
                             </div>
                             <div class="flex gap-3">
-                                <span class="mt-1 w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                                <span class="mt-1 w-2 h-2 rounded-full bg-[#e9c95a] flex-shrink-0"></span>
                                 <p>We’ll suggest suitable clinics and next steps.</p>
                             </div>
                             <div class="flex gap-3">
-                                <span class="mt-1 w-2 h-2 rounded-full bg-blue-400 flex-shrink-0"></span>
+                                <span class="mt-1 w-2 h-2 rounded-full bg-[#e9c95a] flex-shrink-0"></span>
                                 <p>We’ll help you book a time that works.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="lg:col-span-3 p-10 md:p-14">
+                    <div class="p-10 md:p-14 bg-[#fdfefe]">
                         <form class="space-y-5">
                             <div class="grid md:grid-cols-2 gap-5 text-left">
                                 <div>
-                                    <label class="text-xs font-bold text-slate-500 uppercase ml-2">Full Name</label>
-                                    <input type="text" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1">
+                                    <label class="text-xs font-black uppercase tracking-[0.18em] text-slate-700 ml-2">Full Name</label>
+                                    <input type="text" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1 shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="text-xs font-bold text-slate-500 uppercase ml-2">Nationality</label>
-                                    <input type="text" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1">
+                                    <label class="text-xs font-black uppercase tracking-[0.18em] text-slate-700 ml-2">Nationality</label>
+                                    <input type="text" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1 shadow-sm">
                                 </div>
                             </div>
                             <div class="text-left">
-                                <label class="text-xs font-bold text-slate-500 uppercase ml-2">Treatment needed</label>
+                                <label class="text-xs font-black uppercase tracking-[0.18em] text-slate-700 ml-2">Treatment needed</label>
                                 <div class="relative mt-1">
                                     <select class="w-full appearance-none p-4 pr-12 bg-white rounded-2xl border border-slate-200 shadow-sm focus:ring-2 focus:ring-blue-600 outline-none text-slate-900">
                                         <option selected disabled>Choose your treatment</option>
@@ -278,16 +417,20 @@
                             </div>
                             <div class="grid md:grid-cols-2 gap-5 text-left">
                                 <div>
-                                    <label class="text-xs font-bold text-slate-500 uppercase ml-2">Preferred Date</label>
-                                    <input type="text" placeholder="Flexible or exact date" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1">
+                                    <label class="text-xs font-black uppercase tracking-[0.18em] text-slate-700 ml-2">Preferred Date</label>
+                                    <input type="text" placeholder="Flexible or exact date" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1 shadow-sm">
                                 </div>
                                 <div>
-                                    <label class="text-xs font-bold text-slate-500 uppercase ml-2">WhatsApp / Email</label>
-                                    <input type="text" placeholder="How we should contact you" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1">
+                                    <label class="text-xs font-black uppercase tracking-[0.18em] text-slate-700 ml-2">WhatsApp / Email</label>
+                                    <input type="text" placeholder="How we should contact you" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1 shadow-sm">
                                 </div>
                             </div>
-                            <p class="text-[11px] md:text-xs text-slate-500 text-left">Prefer to chat now? Tap the green WhatsApp button.</p>
-                            <button class="w-full py-5 bg-blue-600 text-white font-black rounded-2xl hover:bg-blue-700 transition shadow-xl shadow-blue-500/20 text-lg">SUBMIT TO CONCIERGE</button>
+                            <div class="text-left">
+                                <label class="text-xs font-black uppercase tracking-[0.18em] text-slate-700 ml-2">Invited Code (Optional)</label>
+                                <input type="text" placeholder="Enter referral code if you have one" class="w-full p-4 bg-white rounded-2xl border border-slate-200 focus:ring-2 focus:ring-blue-600 outline-none text-slate-900 mt-1 shadow-sm">
+                            </div>
+                            <p class="text-[11px] md:text-xs text-slate-600 text-left">Prefer to chat now? Tap the WhatsApp button.</p>
+                            <button class="w-full py-5 btn-luxury font-black rounded-2xl text-lg">SUBMIT TO CONCIERGE</button>
                         </form>
                     </div>
                 </div>
@@ -295,7 +438,7 @@
         </div>
     </section>
 
-    <footer class="border-t border-slate-100 bg-white px-6 py-10">
+    <footer class="border-t border-slate-100 bg-[#fdfefe] px-6 py-10">
         <div class="mx-auto flex max-w-[1440px] flex-col gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <a href="index.html" class="text-xl font-black tracking-tighter">DENTAL<span class="text-blue-600">TOURISM</span></a>
             <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">DentiTrust platform prototype.</p>
@@ -303,8 +446,8 @@
     </footer>
 
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-        <div id="wa-widget" class="hidden w-[min(92vw,22rem)] overflow-hidden rounded-[1.75rem] border border-slate-100 bg-white shadow-[0_25px_80px_rgba(15,23,42,0.18)]">
-            <div class="bg-slate-900 p-5 text-white">
+            <div id="wa-widget" class="hidden w-[min(92vw,22rem)] overflow-hidden rounded-[1.75rem] border border-slate-100 bg-[#f4f9fc] shadow-[0_25px_80px_rgba(15,95,154,0.22)]">
+            <div class="dark-panel bg-slate-900 p-5 text-white">
                 <div class="flex items-start justify-between gap-4">
                     <div>
                         <p class="text-xs font-bold uppercase tracking-[0.2em] text-blue-300">WhatsApp Support</p>
@@ -317,27 +460,27 @@
                 <p class="mt-3 text-sm text-slate-300">Pick a topic or type your own message. Clicking send will open WhatsApp with your text ready.</p>
             </div>
             <div class="space-y-3 p-4">
-                <button data-wa-text="Hi, I need a dental consultation in Da Nang." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-green-200 hover:bg-green-50">
+                <button data-wa-text="Hi, I need a dental consultation in Da Nang." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-blue-200 hover:bg-blue-50">
                     <span class="block text-sm font-bold text-slate-900">Dental consultation</span>
                     <span class="mt-1 block text-xs text-slate-500">General advice and clinic matching</span>
                 </button>
-                <button data-wa-text="I want to know pricing for implants / veneers / cleaning." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-green-200 hover:bg-green-50">
+                <button data-wa-text="I want to know pricing for implants / veneers / cleaning." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-blue-200 hover:bg-blue-50">
                     <span class="block text-sm font-bold text-slate-900">Price check</span>
                     <span class="mt-1 block text-xs text-slate-500">Compare treatment costs</span>
                 </button>
-                <button data-wa-text="I want to know pricing for braces / orthodontics." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-green-200 hover:bg-green-50">
+                <button data-wa-text="I want to know pricing for braces / orthodontics." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-blue-200 hover:bg-blue-50">
                     <span class="block text-sm font-bold text-slate-900">Braces</span>
                     <span class="mt-1 block text-xs text-slate-500">Orthodontics pricing</span>
                 </button>
-                <button data-wa-text="Please help me book a clinic and arrange airport pickup." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-green-200 hover:bg-green-50">
+                <button data-wa-text="Please help me book a clinic and arrange airport pickup." class="wa-quick w-full rounded-2xl border border-slate-200 px-4 py-3 text-left transition hover:border-blue-200 hover:bg-blue-50">
                     <span class="block text-sm font-bold text-slate-900">Book + transfer</span>
                     <span class="mt-1 block text-xs text-slate-500">Schedule and travel support</span>
                 </button>
                 <div class="pt-1">
-                    <input id="wa-message" type="text" placeholder="Type your message..." class="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-green-500">
+                    <input id="wa-message" type="text" placeholder="Type your message..." class="w-full rounded-2xl border border-slate-200 px-4 py-3 outline-none focus:ring-2 focus:ring-blue-600">
                 </div>
                 <div class="flex gap-3">
-                    <button id="wa-send" type="button" class="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl bg-green-500 px-4 py-3 font-black text-white transition hover:bg-green-600">
+                    <button id="wa-send" type="button" class="inline-flex flex-1 items-center justify-center gap-2 rounded-2xl btn-luxury px-4 py-3 font-black text-white transition">
                         Send to WhatsApp
                     </button>
                     <button id="wa-minimize" type="button" class="inline-flex items-center justify-center rounded-2xl border border-slate-200 px-4 py-3 text-sm font-black text-slate-900 transition hover:bg-slate-50">
@@ -346,7 +489,7 @@
                 </div>
             </div>
         </div>
-        <button id="wa-fab" type="button" aria-label="WhatsApp Now" title="WhatsApp Now" class="inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-2xl shadow-green-500/30 transition hover:bg-green-600">
+        <button id="wa-fab" type="button" aria-label="WhatsApp Now" title="WhatsApp Now" class="inline-flex h-14 w-14 items-center justify-center rounded-full btn-luxury text-white transition">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M20.52 3.48A11.8 11.8 0 0 0 12.04 0C5.5 0 .19 5.31.19 11.85c0 2.08.54 4.11 1.56 5.9L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.54 0 11.85-5.31 11.85-11.85 0-3.17-1.23-6.14-3.38-8.43Zm-8.48 18.26h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.8.99 1.02-3.7-.24-.38a9.82 9.82 0 0 1-1.5-5.21C2.14 6.52 6.5 2.16 12.05 2.16c2.62 0 5.08 1.02 6.93 2.86a9.72 9.72 0 0 1 2.86 6.9c0 5.55-4.36 9.82-9.8 9.82Zm5.7-7.42c-.31-.15-1.84-.9-2.12-1-.28-.1-.48-.15-.68.15-.2.3-.78 1-.96 1.2-.18.2-.35.23-.66.08-.31-.15-1.31-.48-2.5-1.53-.93-.83-1.56-1.86-1.74-2.17-.18-.31-.02-.47.13-.62.13-.13.31-.35.46-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.08-.15-.68-1.63-.93-2.23-.24-.58-.48-.5-.66-.51h-.56c-.2 0-.53.08-.8.38-.27.3-1.03 1-1.03 2.43s1.05 2.81 1.2 3c.15.2 2.07 3.16 5.01 4.43.7.3 1.24.48 1.67.62.7.22 1.33.19 1.83.12.56-.08 1.84-.75 2.1-1.47.26-.72.26-1.34.18-1.47-.08-.13-.28-.2-.59-.35Z"/>
             </svg>
@@ -639,23 +782,23 @@
                     <div class="aspect-[4/3] rounded-[2rem] overflow-hidden bg-slate-50 relative flex items-center justify-center">
                         <svg class="w-12 h-12 text-slate-200 transition-transform duration-700 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
                         <div class="absolute top-4 left-4">
-                            <span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-black text-blue-600 rounded-lg shadow-sm border border-blue-50 uppercase tracking-widest italic">Vetted</span>
+                        <span class="px-3 py-1 bg-white/90 backdrop-blur-sm text-[10px] font-black gold-text rounded-lg shadow-sm gold-border uppercase tracking-widest italic">Vetted</span>
                         </div>
                     </div>
                 </div>
                 <div class="px-8 pb-8 flex-grow flex flex-col">
-                    <p class="text-[10px] font-black text-blue-500 uppercase tracking-[0.2em] mb-2">${clinic.partner}</p>
+                    <p class="text-[10px] font-black gold-text uppercase tracking-[0.2em] mb-2">${clinic.partner}</p>
                     <h4 class="text-xl font-black text-slate-900 leading-tight mb-5 group-hover:text-blue-600 transition-colors clinic-title">${clinic.title}</h4>
                     <div class="mb-4 space-y-2">
                         <p class="text-xs font-semibold text-slate-500 flex items-start gap-2">
-                            <span class="mt-1 inline-block h-2 w-2 rounded-full bg-blue-600 flex-shrink-0"></span>
+                            <span class="mt-1 inline-block h-2 w-2 rounded-full gold-fill flex-shrink-0"></span>
                             <span>${clinic.address}</span>
                         </p>
                     </div>
                     
                     <div class="space-y-3 mb-8 flex-grow">
                         <div class="flex items-center gap-3">
-                            <div class="w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                            <div class="w-5 h-5 rounded-full gold-soft flex items-center justify-center gold-text">
                                 <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                             </div>
                             <span class="text-[13px] font-bold text-slate-600">${clinic.spec}</span>
