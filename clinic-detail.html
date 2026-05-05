@@ -8,22 +8,22 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0f5f9a;
-            --secondary: #e9c95a;
-            --bg-body: #fcfdfe;
-            --bg-section: #f8fbfd;
-            --text-main: #18466f;
+            --primary: #0e5a63;
+            --secondary: #d7b55b;
+            --bg-body: #fbfaf6;
+            --bg-section: #f3efe7;
+            --text-main: #183042;
             --dt-primary: var(--primary);
             --dt-primary-dark: var(--text-main);
             --dt-bg: var(--bg-body);
             --dt-surface: #ffffff;
-            --dt-border: #dce4ea;
+            --dt-border: #d9d1c4;
             --dt-accent: var(--secondary);
             --dt-main: var(--text-main);
-            --dt-muted: #627085;
+            --dt-muted: #6d7a80;
         }
         html {
             scroll-behavior: smooth;
@@ -35,13 +35,14 @@
             background-color: var(--bg-body);
             line-height: 1.8;
             background:
-                radial-gradient(circle at 18% 10%, rgba(233,201,90,0.06), transparent 0 14%),
-                radial-gradient(circle at 84% 8%, rgba(15,95,154,0.06), transparent 0 18%),
-                linear-gradient(180deg, #ffffff 0%, #fcfdfe 55%, #f8fbfd 100%);
+                radial-gradient(circle at 18% 10%, rgba(215,181,91,0.08), transparent 0 14%),
+                radial-gradient(circle at 84% 8%, rgba(14,90,99,0.08), transparent 0 18%),
+                linear-gradient(180deg, #fffefb 0%, #f9f5ee 55%, #f2ece3 100%);
         }
         h1, h2, h3 {
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
             color: var(--text-main);
         }
         .detail-shell {
@@ -50,26 +51,26 @@
         }
         .gold-fill {
             background:
-                linear-gradient(135deg, #f5dd82 0%, #e0bb48 52%, #fff2bf 100%) !important;
+                linear-gradient(135deg, #f7e8ac 0%, #d7b55b 52%, #fff3c9 100%) !important;
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,0.62),
-                0 8px 18px rgba(224,187,72,0.22);
+                0 8px 18px rgba(215,181,91,0.22);
         }
         .gold-text { color: var(--dt-accent) !important; }
-        .gold-border { border-color: rgba(233,201,90,0.42) !important; }
-        .gold-soft { background-color: rgba(233,201,90,0.10) !important; }
+        .gold-border { border-color: rgba(215,181,91,0.42) !important; }
+        .gold-soft { background-color: rgba(215,181,91,0.10) !important; }
         .btn-luxury {
             background: var(--primary) !important;
             color: #ffffff !important;
-            border: 1px solid rgba(233,201,90,0.42) !important;
-            box-shadow: 0 14px 30px rgba(15,95,154,0.14);
+            border: 1px solid rgba(215,181,91,0.42) !important;
+            box-shadow: 0 14px 30px rgba(14,90,99,0.14);
             transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
         }
         .btn-luxury:hover {
             background: #111111 !important;
             color: #ffffff !important;
-            border-color: rgba(233,201,90,0.82) !important;
-            box-shadow: 0 16px 36px rgba(15,95,154,0.18);
+            border-color: rgba(215,181,91,0.82) !important;
+            box-shadow: 0 16px 36px rgba(14,90,99,0.18);
         }
         .soft-card {
             box-shadow: 0 25px 70px rgba(15, 23, 42, 0.09);
@@ -78,7 +79,7 @@
             box-shadow: 0 30px 90px rgba(15, 23, 42, 0.2);
         }
         .thumb-active {
-            outline: 2px solid rgb(233 201 90);
+            outline: 2px solid rgb(215 181 91);
             outline-offset: 2px;
         }
         .sticky-panel {
@@ -94,32 +95,32 @@
         .text-blue-600 { color: var(--dt-primary) !important; }
         .border-blue-600 { border-color: var(--dt-primary) !important; }
         .bg-blue-50 { background-color: var(--bg-section) !important; }
-        .bg-blue-100 { background-color: rgba(233,201,90,0.10) !important; }
-        .bg-blue-200 { background-color: rgba(233,201,90,0.16) !important; }
-        .bg-blue-400 { background-color: rgba(15,95,154,0.28) !important; }
+        .bg-blue-100 { background-color: rgba(215,181,91,0.10) !important; }
+        .bg-blue-200 { background-color: rgba(215,181,91,0.16) !important; }
+        .bg-blue-400 { background-color: rgba(14,90,99,0.28) !important; }
         .bg-blue-500 { background-color: var(--dt-primary) !important; }
         .bg-slate-50 { background-color: var(--bg-section) !important; }
         .bg-slate-900 {
             background:
-                linear-gradient(145deg, #0f5f9a 0%, #1670b4 100%) !important;
+                linear-gradient(145deg, #0e5a63 0%, #135f72 100%) !important;
         }
         .text-blue-100 { color: #ffffff !important; }
         .text-blue-200 { color: #f8fbfd !important; }
         .text-blue-300 { color: #dce4ea !important; }
         .text-blue-500 { color: var(--dt-accent) !important; }
         .text-blue-700 { color: var(--text-main) !important; }
-        .border-blue-100 { border-color: rgba(15,95,154,0.08) !important; }
-        .border-blue-200 { border-color: rgba(15,95,154,0.12) !important; }
-        .border-blue-400\/30 { border-color: rgba(233,201,90,0.22) !important; }
-        .bg-blue-500\/15 { background-color: rgba(233,201,90,0.12) !important; }
+        .border-blue-100 { border-color: rgba(14,90,99,0.08) !important; }
+        .border-blue-200 { border-color: rgba(14,90,99,0.12) !important; }
+        .border-blue-400\/30 { border-color: rgba(215,181,91,0.22) !important; }
+        .bg-blue-500\/15 { background-color: rgba(215,181,91,0.12) !important; }
         .hover\:text-blue-600:hover { color: var(--dt-accent) !important; }
         .hover\:bg-blue-50:hover { background-color: var(--bg-section) !important; }
         .hover\:border-blue-200:hover { border-color: var(--dt-accent) !important; }
         .hover\:bg-blue-700:hover { background-color: var(--text-main) !important; }
-        .shadow-blue-200 { --tw-shadow-color: rgba(15,95,154,0.16) !important; }
-        .shadow-blue-500\/20 { --tw-shadow-color: rgba(224,187,72,0.24) !important; }
-        .ring-blue-600 { --tw-ring-color: rgb(233 201 90) !important; }
-        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(212 177 90) !important; }
+        .shadow-blue-200 { --tw-shadow-color: rgba(14,90,99,0.16) !important; }
+        .shadow-blue-500\/20 { --tw-shadow-color: rgba(215,181,91,0.24) !important; }
+        .ring-blue-600 { --tw-ring-color: rgb(215 181 91) !important; }
+        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(215 181 91) !important; }
         .text-slate-200 { color: #dce4ea !important; }
         .text-slate-300 { color: #c7d0da !important; }
         .text-slate-400 { color: var(--dt-muted) !important; }
@@ -131,15 +132,15 @@
         .text-slate-950 { color: var(--text-main) !important; }
         .border-slate-100 { border-color: #dce4ea !important; }
         .border-slate-200 { border-color: #cfdbe5 !important; }
-        .bg-slate-800 { background-color: #1670b4 !important; }
+        .bg-slate-800 { background-color: #135f72 !important; }
         .hero-title {
             line-height: 0.98;
             text-wrap: balance;
         }
     </style>
 </head>
-<body class="bg-[#fcfdfe] text-slate-900">
-    <nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-[#f8fbfd]/90 backdrop-blur-xl">
+<body class="bg-[#fbfaf6] text-slate-900">
+    <nav class="fixed top-0 z-50 w-full border-b border-slate-100 bg-[#fbfaf6]/90 backdrop-blur-xl">
         <div class="mx-auto flex h-20 max-w-[1440px] items-center justify-between px-6 md:h-24">
             <a href="index.html" class="flex items-center gap-2 text-2xl font-black tracking-tighter">
                 <span class="h-8 w-8 rounded-lg gold-fill shadow-lg shadow-blue-200 ring-1 ring-blue-400/30"></span>
@@ -162,7 +163,7 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f8fbfd] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f3efe7] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
             <a href="index.html#about" class="py-2">Why Us</a>
             <a href="index.html#price-comparison" class="py-2 border-t border-slate-50">Compare</a>
             <a href="index.html#clinics" class="py-2 border-t border-slate-50">Top Clinics</a>
@@ -262,7 +263,7 @@
         </section>
     </main>
 
-    <footer class="border-t border-slate-100 bg-[#fcfdfe] px-6 py-10">
+    <footer class="border-t border-slate-100 bg-[#fbfaf6] px-6 py-10">
         <div class="mx-auto flex max-w-[1440px] flex-col gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <a href="index.html" class="text-xl font-black tracking-tighter">DENTAL<span class="text-blue-600">TOURISM</span></a>
             <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">Clinic profile page for international patients.</p>
@@ -503,7 +504,7 @@
         el.summary.textContent = clinic.summary;
         el.description.textContent = clinic.description;
         el.services.innerHTML = clinic.services.map((service) => `<li class="rounded-full border border-blue-100 bg-blue-50 px-4 py-2 text-sm font-semibold text-blue-700">${service}</li>`).join('');
-        el.certs.innerHTML = clinic.certs.map((cert) => `<li class="rounded-full border border-blue-100 bg-[#f8fbfd] px-4 py-2 text-sm font-semibold text-blue-700">${cert}</li>`).join('');
+        el.certs.innerHTML = clinic.certs.map((cert) => `<li class="rounded-full border border-blue-100 bg-[#f3efe7] px-4 py-2 text-sm font-semibold text-blue-700">${cert}</li>`).join('');
         const testimonialItems = clinic.testimonials || (clinic.testimonial ? [{ quote: clinic.testimonial.replace(/^["“]|["”]$/g, ''), author: clinic.testimonialAuthor }] : []);
         el.testimonials.innerHTML = testimonialItems.map((item) => `
             <article class="rounded-[1.5rem] border border-slate-200 bg-white p-5 shadow-sm">

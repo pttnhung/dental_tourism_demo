@@ -7,24 +7,24 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         :root {
-            --primary: #0f5f9a;
-            --secondary: #e9c95a;
-            --bg-body: #fcfdfe;
-            --bg-section: #f8fbfd;
-            --text-main: #18466f;
+            --primary: #0e5a63;
+            --secondary: #d7b55b;
+            --bg-body: #fbfaf6;
+            --bg-section: #f3efe7;
+            --text-main: #183042;
             --dt-primary: var(--primary);
             --dt-primary-dark: var(--text-main);
             --dt-bg: var(--bg-body);
             --dt-surface: #ffffff;
-            --dt-border: #dce4ea;
+            --dt-border: #d9d1c4;
             --dt-accent: var(--secondary);
             --dt-main: var(--text-main);
-            --dt-muted: #627085;
+            --dt-muted: #6d7a80;
         }
         html {
             scroll-behavior: smooth;
@@ -36,48 +36,49 @@
             background-color: var(--bg-body);
             line-height: 1.8;
             background:
-                radial-gradient(circle at 18% 10%, rgba(233,201,90,0.06), transparent 0 14%),
-                radial-gradient(circle at 84% 8%, rgba(15,95,154,0.06), transparent 0 18%),
-                linear-gradient(180deg, #ffffff 0%, #fcfdfe 55%, #f8fbfd 100%);
+                radial-gradient(circle at 18% 10%, rgba(215,181,91,0.08), transparent 0 14%),
+                radial-gradient(circle at 84% 8%, rgba(14,90,99,0.08), transparent 0 18%),
+                linear-gradient(180deg, #fffefb 0%, #f9f5ee 55%, #f2ece3 100%);
         }
         h1, h2, h3 {
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
             color: var(--text-main);
         }
-        .glass { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px) saturate(1.02); border-color: rgba(233,201,90,0.10); }
+        .glass { background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px) saturate(1.02); border-color: rgba(215,181,91,0.10); }
         .hero-gradient {
             background:
-                radial-gradient(circle at 16% 18%, rgba(216,178,76,0.08), transparent 0 16%),
+                radial-gradient(circle at 16% 18%, rgba(215,181,91,0.12), transparent 0 16%),
                 radial-gradient(circle at 86% 16%, rgba(255,255,255,0.05), transparent 0 18%),
-                linear-gradient(135deg, #071a2e 0%, #0d2f52 46%, #123d66 100%);
+                linear-gradient(135deg, #072233 0%, #0e5a63 45%, #2c7480 100%);
         }
         section { scroll-margin-top: 112px; }
         .blog-card img { transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
         .blog-card:hover img { transform: scale(1.08); }
-        .gold-fill { background: linear-gradient(135deg, #f5dd82 0%, #e0bb48 52%, #fff2bf 100%) !important; }
         .gold-text { color: var(--dt-accent) !important; }
-        .gold-border { border-color: rgba(233,201,90,0.45) !important; }
-        .gold-soft { background-color: rgba(233,201,90,0.12) !important; }
+        .gold-fill { background: linear-gradient(135deg, #f7e8ac 0%, #d7b55b 52%, #fff3c9 100%) !important; }
+        .gold-border { border-color: rgba(215,181,91,0.45) !important; }
+        .gold-soft { background-color: rgba(215,181,91,0.12) !important; }
         .btn-luxury {
             background: var(--primary) !important;
             color: #ffffff !important;
-            border: 1px solid rgba(233,201,90,0.42) !important;
-            box-shadow: 0 14px 30px rgba(15,95,154,0.14);
+            border: 1px solid rgba(215,181,91,0.42) !important;
+            box-shadow: 0 14px 30px rgba(14,90,99,0.14);
             transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
         }
         .btn-luxury:hover {
             background: #111111 !important;
             color: #ffffff !important;
-            border-color: rgba(233,201,90,0.82) !important;
-            box-shadow: 0 16px 36px rgba(15,95,154,0.18);
+            border-color: rgba(215,181,91,0.82) !important;
+            box-shadow: 0 16px 36px rgba(14,90,99,0.18);
         }
-        .editorial-glow { background: radial-gradient(circle at top, rgba(233,201,90,0.07), transparent 55%); }
+        .editorial-glow { background: radial-gradient(circle at top, rgba(215,181,91,0.09), transparent 55%); }
         .article-prose p { margin-top: 1.15rem; }
         .article-prose p:first-child {
             margin-top: 0;
             padding-left: 1rem;
-            border-left: 4px solid rgb(223 192 79);
+            border-left: 4px solid rgb(215 181 91);
             color: var(--text-main);
             font-size: 1.125rem;
             line-height: 1.9;
@@ -87,36 +88,36 @@
         }
         .blog-article-shell {
             background:
-                radial-gradient(circle at top left, rgba(15,95,154,0.06), transparent 30%),
+                radial-gradient(circle at top left, rgba(14,90,99,0.06), transparent 30%),
                 linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,251,253,0.98));
         }
         .bg-blue-600 { background-color: var(--dt-primary) !important; }
         .text-blue-600 { color: var(--dt-primary) !important; }
         .border-blue-600 { border-color: var(--dt-primary) !important; }
         .bg-blue-50 { background-color: var(--bg-section) !important; }
-        .bg-blue-100 { background-color: rgba(212,177,90,0.10) !important; }
-        .bg-blue-200 { background-color: rgba(212,177,90,0.16) !important; }
-        .bg-blue-400 { background-color: rgba(15,95,154,0.28) !important; }
+        .bg-blue-100 { background-color: rgba(215,181,91,0.10) !important; }
+        .bg-blue-200 { background-color: rgba(215,181,91,0.16) !important; }
+        .bg-blue-400 { background-color: rgba(14,90,99,0.28) !important; }
         .bg-blue-500 { background-color: var(--dt-primary) !important; }
         .bg-slate-50 { background-color: var(--bg-section) !important; }
-        .bg-slate-900 { background: linear-gradient(145deg, #0f5f9a 0%, #1670b4 100%) !important; }
+        .bg-slate-900 { background: linear-gradient(145deg, #0e5a63 0%, #135f72 100%) !important; }
         .text-blue-100 { color: #ffffff !important; }
         .text-blue-200 { color: #f8fbfd !important; }
         .text-blue-300 { color: #dce4ea !important; }
         .text-blue-500 { color: var(--dt-accent) !important; }
         .text-blue-700 { color: var(--text-main) !important; }
-        .border-blue-100 { border-color: rgba(15,95,154,0.08) !important; }
-        .border-blue-200 { border-color: rgba(15,95,154,0.12) !important; }
-        .border-blue-400\/30 { border-color: rgba(212,177,90,0.22) !important; }
-        .bg-blue-500\/15 { background-color: rgba(212,177,90,0.12) !important; }
+        .border-blue-100 { border-color: rgba(14,90,99,0.08) !important; }
+        .border-blue-200 { border-color: rgba(14,90,99,0.12) !important; }
+        .border-blue-400\/30 { border-color: rgba(215,181,91,0.22) !important; }
+        .bg-blue-500\/15 { background-color: rgba(215,181,91,0.12) !important; }
         .hover\:text-blue-600:hover { color: var(--dt-accent) !important; }
         .hover\:bg-blue-50:hover { background-color: var(--bg-section) !important; }
         .hover\:border-blue-200:hover { border-color: var(--dt-accent) !important; }
         .hover\:bg-blue-700:hover { background-color: var(--text-main) !important; }
-        .shadow-blue-200 { --tw-shadow-color: rgba(15,95,154,0.16) !important; }
-        .shadow-blue-500\/20 { --tw-shadow-color: rgba(224,187,72,0.20) !important; }
-        .ring-blue-600 { --tw-ring-color: rgb(212 177 90) !important; }
-        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(212 177 90) !important; }
+        .shadow-blue-200 { --tw-shadow-color: rgba(14,90,99,0.16) !important; }
+        .shadow-blue-500\/20 { --tw-shadow-color: rgba(215,181,91,0.20) !important; }
+        .ring-blue-600 { --tw-ring-color: rgb(215 181 91) !important; }
+        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(215 181 91) !important; }
         .text-slate-200 { color: #dce4ea !important; }
         .text-slate-300 { color: #c7d0da !important; }
         .text-slate-400 { color: var(--dt-muted) !important; }
@@ -128,14 +129,14 @@
         .text-slate-950 { color: var(--text-main) !important; }
         .border-slate-100 { border-color: #dce4ea !important; }
         .border-slate-200 { border-color: #cfdbe5 !important; }
-        .bg-slate-800 { background-color: #1670b4 !important; }
+        .bg-slate-800 { background-color: #135f72 !important; }
         .hero-title {
             line-height: 0.98;
             text-wrap: balance;
         }
     </style>
 </head>
-<body class="bg-[#fcfdfe] text-slate-900 leading-relaxed overflow-x-hidden">
+<body class="bg-[#fbfaf6] text-slate-900 leading-relaxed overflow-x-hidden">
     <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
         <div class="max-w-[1440px] mx-auto px-6 h-20 md:h-24 flex justify-between items-center">
             <a href="index.html" class="text-2xl font-black tracking-tighter flex items-center gap-2">
@@ -159,7 +160,7 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f8fbfd] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f3efe7] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
             <a href="index.html#about" class="py-2">Why Us</a>
             <a href="index.html#price-comparison" class="py-2 border-t border-slate-50">Compare</a>
             <a href="index.html#clinics" class="py-2 border-t border-slate-50">Top Clinics</a>
@@ -204,7 +205,7 @@
     <div id="blog-modal" class="fixed inset-0 z-[60] hidden">
         <div class="absolute inset-0 bg-slate-950/60 backdrop-blur-sm" data-modal-close></div>
         <div class="relative mx-auto flex h-full max-w-7xl items-center px-4 py-6 md:px-6">
-            <div class="w-full max-h-[92vh] overflow-hidden rounded-[2rem] bg-white shadow-[0_40px_120px_rgba(0,0,0,0.2)]">
+            <div class="w-full max-h-[92vh] overflow-hidden rounded-[2rem] bg-white shadow-[0_40px_120px_rgba(14,90,99,0.2)]">
                 <div class="relative max-h-[92vh] overflow-y-auto blog-article-shell">
                     <button id="blog-modal-close" class="absolute right-5 top-5 z-10 rounded-full bg-white/90 p-2 text-slate-900 shadow-sm backdrop-blur hover:bg-white transition" aria-label="Close blog detail">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>

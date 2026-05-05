@@ -7,25 +7,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         :root {
-            --primary: #0d2f52;
-            --secondary: #d8b24c;
-            --bg-body: #fdfefe;
-            --bg-section: #f4f9fc;
-            --text-main: #163a5c;
+            --primary: #0e5a63;
+            --secondary: #d7b55b;
+            --bg-body: #fbfaf6;
+            --bg-section: #f3efe7;
+            --text-main: #183042;
             --dt-primary: var(--primary);
             --dt-primary-dark: var(--text-main);
             --dt-bg: var(--bg-body);
             --dt-surface: #ffffff;
-            --dt-border: #dce4ea;
+            --dt-border: #d9d1c4;
             --dt-accent: var(--secondary);
             --dt-main: var(--text-main);
-            --dt-muted: #667892;
+            --dt-muted: #6d7a80;
         }
         html {
             scroll-behavior: smooth;
@@ -37,91 +37,92 @@
             background-color: var(--bg-body);
             line-height: 1.8;
             background:
-                radial-gradient(circle at 18% 10%, rgba(216,178,76,0.03), transparent 0 14%),
-                radial-gradient(circle at 84% 8%, rgba(13,47,82,0.04), transparent 0 18%),
-                linear-gradient(180deg, #ffffff 0%, #fbfbfb 58%, #f7f4ed 100%);
+                radial-gradient(circle at 18% 10%, rgba(215,181,91,0.08), transparent 0 14%),
+                radial-gradient(circle at 84% 8%, rgba(14,90,99,0.08), transparent 0 18%),
+                linear-gradient(180deg, #fffefb 0%, #f9f5ee 58%, #f2ece3 100%);
         }
         h1, h2, h3 {
-            font-weight: 700;
-            letter-spacing: -0.02em;
+            font-family: "Cormorant Garamond", Georgia, serif;
+            font-weight: 600;
+            letter-spacing: -0.01em;
             color: var(--text-main);
         }
         .glass {
             background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(14px) saturate(1.02);
-            border-color: rgba(216,178,76,0.10);
+            border-color: rgba(215,181,91,0.10);
             box-shadow: 0 14px 36px rgba(14, 26, 49, 0.05);
         }
         .hero-gradient {
             background:
-                radial-gradient(circle at 16% 18%, rgba(216,178,76,0.08), transparent 0 16%),
+                radial-gradient(circle at 16% 18%, rgba(215,181,91,0.12), transparent 0 16%),
                 radial-gradient(circle at 86% 16%, rgba(255,255,255,0.05), transparent 0 18%),
-                linear-gradient(135deg, #071a2e 0%, #0d2f52 46%, #123d66 100%);
+                linear-gradient(135deg, #072233 0%, #0e5a63 45%, #2c7480 100%);
         }
         section { scroll-margin-top: 112px; }
         .media-card { background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(251,251,249,0.95)); }
         .gold-fill {
             background:
-                linear-gradient(135deg, #f6e08e 0%, #d8b24c 52%, #fff6cf 100%) !important;
+                linear-gradient(135deg, #f7e8ac 0%, #d7b55b 52%, #fff3c9 100%) !important;
             box-shadow:
                 inset 0 1px 0 rgba(255,255,255,0.62),
-                0 8px 18px rgba(216,178,76,0.20);
+                0 8px 18px rgba(215,181,91,0.20);
         }
         .gold-text { color: var(--dt-accent) !important; }
-        .gold-border { border-color: rgba(216,178,76,0.42) !important; }
-        .gold-soft { background-color: rgba(216,178,76,0.10) !important; }
+        .gold-border { border-color: rgba(215,181,91,0.42) !important; }
+        .gold-soft { background-color: rgba(215,181,91,0.10) !important; }
         .btn-luxury {
             background: var(--primary) !important;
             color: #ffffff !important;
-            border: 1px solid rgba(216,178,76,0.42) !important;
+            border: 1px solid rgba(215,181,91,0.42) !important;
             box-shadow: 0 14px 30px rgba(13,47,82,0.12);
             transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
         }
         .btn-luxury:hover {
             background: #111111 !important;
             color: #ffffff !important;
-            border-color: rgba(216,178,76,0.82) !important;
+            border-color: rgba(215,181,91,0.82) !important;
             box-shadow: 0 16px 36px rgba(13,47,82,0.16);
         }
         .bg-blue-600 { background-color: var(--dt-primary) !important; }
         .text-blue-600 { color: var(--dt-primary) !important; }
         .border-blue-600 { border-color: var(--dt-primary) !important; }
         .bg-blue-50 { background-color: var(--bg-section) !important; }
-        .bg-blue-100 { background-color: rgba(233,201,90,0.10) !important; }
-        .bg-blue-200 { background-color: rgba(233,201,90,0.16) !important; }
-        .bg-blue-300 { background-color: rgba(13,47,82,0.10) !important; }
-        .bg-blue-400 { background-color: rgba(13,47,82,0.28) !important; }
+        .bg-blue-100 { background-color: rgba(215,181,91,0.10) !important; }
+        .bg-blue-200 { background-color: rgba(215,181,91,0.16) !important; }
+        .bg-blue-300 { background-color: rgba(14,90,99,0.10) !important; }
+        .bg-blue-400 { background-color: rgba(14,90,99,0.28) !important; }
         .bg-blue-500 { background-color: var(--dt-primary) !important; }
         .text-blue-100 { color: #ffffff !important; }
         .text-blue-200 { color: #f9fafb !important; }
         .text-blue-300 { color: #d9e1e8 !important; }
         .text-blue-500 { color: var(--dt-accent) !important; }
         .text-blue-700 { color: var(--text-main) !important; }
-        .border-blue-100 { border-color: rgba(13,47,82,0.08) !important; }
-        .border-blue-200 { border-color: rgba(13,47,82,0.12) !important; }
-        .border-blue-400\/30 { border-color: rgba(216,178,76,0.20) !important; }
+        .border-blue-100 { border-color: rgba(14,90,99,0.08) !important; }
+        .border-blue-200 { border-color: rgba(14,90,99,0.12) !important; }
+        .border-blue-400\/30 { border-color: rgba(215,181,91,0.20) !important; }
         .border-slate-100 { border-color: #dde4ea !important; }
         .bg-slate-50 { background-color: var(--bg-section) !important; }
         .bg-slate-950 {
             background:
-                radial-gradient(circle at top right, rgba(216,178,76,0.04), transparent 0 22%),
-                linear-gradient(145deg, #0d2f52 0%, #103c67 48%, #16507f 100%) !important;
+                radial-gradient(circle at top right, rgba(215,181,91,0.05), transparent 0 22%),
+                linear-gradient(145deg, #0e5a63 0%, #135f72 48%, #1f7782 100%) !important;
         }
-        .bg-blue-500\/15 { background-color: rgba(216,178,76,0.10) !important; }
-        .shadow-blue-200 { --tw-shadow-color: rgba(13,47,82,0.14) !important; }
-        .shadow-blue-500\/20 { --tw-shadow-color: rgba(216,178,76,0.20) !important; }
-        .ring-blue-600 { --tw-ring-color: rgb(216 178 76) !important; }
+        .bg-blue-500\/15 { background-color: rgba(215,181,91,0.10) !important; }
+        .shadow-blue-200 { --tw-shadow-color: rgba(14,90,99,0.14) !important; }
+        .shadow-blue-500\/20 { --tw-shadow-color: rgba(215,181,91,0.20) !important; }
+        .ring-blue-600 { --tw-ring-color: rgb(215 181 91) !important; }
         .hover\:text-blue-600:hover { color: var(--dt-accent) !important; }
         .hover\:bg-blue-50:hover { background-color: var(--bg-section) !important; }
         .hover\:border-blue-200:hover { border-color: var(--dt-accent) !important; }
         .hover\:bg-blue-700:hover { background-color: #111111 !important; }
-        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(216 178 76) !important; }
+        .focus\:ring-blue-600:focus { --tw-ring-color: rgb(215 181 91) !important; }
         .text-slate-200 { color: #d9e1e8 !important; }
         .text-slate-300 { color: #c7d0da !important; }
         .text-slate-400 { color: var(--dt-muted) !important; }
         .bg-slate-900 {
             background:
-                linear-gradient(145deg, #0d2f52 0%, #103c67 100%) !important;
+                linear-gradient(145deg, #0e5a63 0%, #135f72 100%) !important;
         }
         .text-slate-500 { color: var(--dt-muted) !important; }
         .text-slate-600 { color: var(--dt-muted) !important; }
@@ -131,7 +132,7 @@
         .text-slate-950 { color: var(--text-main) !important; }
         .border-slate-100 { border-color: #dde4ea !important; }
         .border-slate-200 { border-color: #d2dbe3 !important; }
-        .bg-slate-800 { background-color: #103c67 !important; }
+        .bg-slate-800 { background-color: #135f72 !important; }
         .hero-title {
             line-height: 0.98;
             text-wrap: balance;
@@ -156,7 +157,7 @@
         .dark-panel .text-blue-100,
         .dark-panel .text-blue-200,
         .dark-panel .text-blue-300 {
-            color: #e9c95a !important;
+            color: #d7b55b !important;
         }
         .dark-panel .gold-text {
             color: var(--dt-accent) !important;
@@ -179,7 +180,7 @@
         }
     </style>
 </head>
-<body class="bg-[#fdfefe] text-slate-900 leading-relaxed overflow-x-hidden">
+<body class="bg-[#fbfaf6] text-slate-900 leading-relaxed overflow-x-hidden">
 
     <nav class="fixed top-0 w-full z-50 glass border-b border-slate-100">
         <div class="max-w-[1440px] mx-auto px-6 h-20 md:h-24 flex justify-between items-center">
@@ -206,7 +207,7 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f4f9fc] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-[#f3efe7] border-b border-slate-100 p-6 flex flex-col space-y-4 font-bold shadow-xl text-center">
             <a href="#about" class="py-2">Why Us</a>
             <a href="#price-comparison" class="py-2 border-t border-slate-50">Compare</a>
             <a href="#clinics" class="py-2 border-t border-slate-50">Top Clinics</a>
@@ -223,7 +224,7 @@
                 <span class="block mt-3 text-white">Designed for <span class="gold-text">Travel.</span></span>
             </h1>
             <p class="text-lg md:text-xl text-slate-200/90 max-w-2xl mx-auto mb-12 font-medium">
-                Premium care in Da Nang. We connect international patients with JCI-standard clinics and 24/7 concierge support.
+                Premium care in Da Nang. We connect international patients with JCI-standard clinics and local concierge support.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#book-now" class="px-10 py-5 btn-luxury rounded-2xl font-bold text-lg hover:scale-105 transition-transform">Send Your Request</a>
@@ -241,43 +242,51 @@
         <div class="max-w-[1440px] mx-auto">
             <div class="overflow-hidden rounded-[3rem] border border-slate-100 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
                 <div class="grid gap-0 lg:grid-cols-[1.02fr_0.98fr]">
-                    <div class="bg-gradient-to-br from-[#0d2f52] via-[#103c67] to-[#16507f] p-8 md:p-12 text-white">
-                        <p class="text-[11px] font-black uppercase tracking-[0.3em] text-[#e9c95a]">Price comparison</p>
-                        <h2 class="mt-4 max-w-xl text-3xl md:text-5xl font-black tracking-tight leading-[1.02] text-white">See the savings in one screen.</h2>
+                    <div class="bg-gradient-to-br from-[#072233] via-[#0e5a63] to-[#2c7480] p-8 md:p-12 text-white">
+                        <p class="text-[11px] font-black uppercase tracking-[0.3em] text-[#d7b55b]">Price comparison</p>
+                        <h2 class="mt-4 max-w-xl text-3xl md:text-5xl font-black tracking-tight leading-[1.02] text-white">Compare treatments at a glance.</h2>
 
                         <div class="mt-8 space-y-4 rounded-[2rem] border border-white/10 bg-white/10 p-5 backdrop-blur-sm">
                             <div class="rounded-[1.5rem] border border-white/10 bg-[#f5f9fc] p-4 text-slate-900 shadow-sm">
                                 <label for="comparison-origin" class="text-xs font-black uppercase tracking-[0.18em] text-[#667892] ml-2">From</label>
                                 <div class="relative mt-1">
-                                    <select id="comparison-origin" class="w-full appearance-none p-4 pr-12 rounded-2xl border border-[#d8e3ec] bg-white shadow-sm outline-none text-slate-900 focus:ring-2 focus:ring-blue-600">
+                                    <select id="comparison-origin" class="w-full appearance-none p-4 pr-12 rounded-2xl border border-[#d9d1c4] bg-white shadow-sm outline-none text-slate-900 focus:ring-2 focus:ring-blue-600">
                                         <option value="aus">Australia</option>
                                         <option value="sin">Singapore</option>
                                         <option value="kor">South Korea</option>
                                         <option value="jpn">Japan</option>
                                         <option value="chn">China</option>
+                                        <option value="rus">Russia</option>
                                         <option value="usa">USA</option>
                                     </select>
                                     <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a1 1 0 0 1 1.4.02L10 10.67l3.37-3.44a1 1 0 1 1 1.43 1.4l-4.08 4.16a1 1 0 0 1-1.42 0L5.21 8.63a1 1 0 0 1 .02-1.42Z" clip-rule="evenodd" /></svg>
                                 </div>
                             </div>
                             <div class="rounded-[1.5rem] border border-white/10 bg-[#f5f9fc] p-4 text-slate-900 shadow-sm">
-                                <label for="comparison-treatment" class="text-xs font-black uppercase tracking-[0.18em] text-[#667892] ml-2">Treatment</label>
-                                <div class="relative mt-1">
-                                    <select id="comparison-treatment" class="w-full appearance-none p-4 pr-12 rounded-2xl border border-[#d8e3ec] bg-white shadow-sm outline-none text-slate-900 focus:ring-2 focus:ring-blue-600"></select>
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="pointer-events-none absolute right-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.23 7.21a1 1 0 0 1 1.4.02L10 10.67l3.37-3.44a1 1 0 1 1 1.43 1.4l-4.08 4.16a1 1 0 0 1-1.42 0L5.21 8.63a1 1 0 0 1 .02-1.42Z" clip-rule="evenodd" /></svg>
+                                <div class="flex items-center justify-between gap-3">
+                                    <label class="text-xs font-black uppercase tracking-[0.18em] text-[#667892] ml-2">Treatments</label>
+                                    <span class="text-[11px] font-bold text-slate-500" id="comparison-service-count">0 selected</span>
                                 </div>
+                                <div id="comparison-services" class="mt-3 grid gap-3 sm:grid-cols-2"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="bg-[#fdfefe] p-8 md:p-12 lg:border-l lg:border-[#d8e3ec]">
-                        <div class="h-full rounded-[2rem] border border-[#e9c95a] bg-white p-6 md:p-8 shadow-[0_20px_50px_rgba(15,95,154,0.08)]">
-                            <p class="text-[11px] font-black uppercase tracking-[0.25em] gold-text">Estimated savings</p>
-                            <div class="mt-4 flex items-end gap-2">
-                                <span class="text-5xl font-black tracking-tight text-slate-950" id="comparison-savings">$0</span>
-                                <span class="pb-1 text-sm font-bold text-slate-600">USD</span>
+                    <div class="bg-[#fbfaf6] p-8 md:p-12 lg:border-l lg:border-[#d9d1c4]">
+                        <div class="h-full rounded-[2rem] border border-[#d7b55b] bg-white p-6 md:p-8 shadow-[0_20px_50px_rgba(14,90,99,0.08)]">
+                            <div class="flex items-center justify-between gap-4">
+                                <p class="text-[11px] font-black uppercase tracking-[0.25em] gold-text">Price breakdown</p>
+                                <span class="rounded-full border border-[#d7b55b]/40 bg-[#fff8e8] px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-[#8b6b1d]">Approximate</span>
                             </div>
-                            <p class="mt-4 text-sm leading-7 text-slate-600" id="comparison-summary">Choose a treatment to compare.</p>
+                            <div id="comparison-breakdown" class="mt-5 grid gap-4"></div>
+                            <div class="mt-6 rounded-[1.5rem] border border-[#d9d1c4] bg-[#fcfbf7] p-5">
+                                <p class="text-[11px] font-black uppercase tracking-[0.25em] gold-text">Estimated savings</p>
+                                <div class="mt-3 flex items-end gap-2">
+                                    <span class="text-5xl font-black tracking-tight text-slate-950" id="comparison-savings">~$0</span>
+                                    <span class="pb-1 text-sm font-bold text-slate-600">USD</span>
+                                </div>
+                                <p class="mt-3 text-sm leading-7 text-slate-600" id="comparison-summary">Choose one or more treatments to compare.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -291,27 +300,34 @@
                 <h2 class="gold-text font-bold tracking-[0.2em] mb-4 uppercase text-sm">The Platform Advantage</h2>
                 <h3 class="text-3xl md:text-5xl font-black">Why smart travelers choose us.</h3>
             </div>
-            <div class="grid md:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-14 h-14 bg-blue-50 gold-text rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4">Top-Tier Vetting</h4>
-                    <p class="text-slate-500 font-medium">Only clinics with international certifications and 10+ years of dental excellence are permitted.</p>
+                    <h4 class="text-2xl font-bold mb-4">Expert Vetting</h4>
+                    <p class="text-slate-500 font-medium">Our partner clinics are rigorously vetted for high medical standards and expertise.</p>
                 </div>
                 <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4">Local Concierge</h4>
-                    <p class="text-slate-500 font-medium">A dedicated human assistant for your entire trip: from airport pickup to in-clinic translation.</p>
+                    <h4 class="text-2xl font-bold mb-4">Transparent Pricing</h4>
+                    <p class="text-slate-500 font-medium">No hidden fees. We provide clear, upfront costs so you can plan with confidence.</p>
                 </div>
                 <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
                     </div>
-                    <h4 class="text-2xl font-bold mb-4">No Hidden Fees</h4>
-                    <p class="text-slate-500 font-medium">Transparent, local-equivalent pricing. No tourist markups, just honest medical care.</p>
+                    <h4 class="text-2xl font-bold mb-4">Concierge Support</h4>
+                    <p class="text-slate-500 font-medium">From airport pickup to translation, our team is with you every step of the way.</p>
+                </div>
+                <div class="bg-white p-10 rounded-[2.5rem] border border-slate-100 shadow-sm hover:shadow-xl transition group" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" /></svg>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4">Modern Facilities</h4>
+                    <p class="text-slate-500 font-medium">Experience world-class care in clinics equipped with the latest dental technology.</p>
                 </div>
             </div>
         </div>
@@ -371,25 +387,25 @@
         <div class="max-w-7xl mx-auto">
             <div class="overflow-hidden rounded-[3rem] border border-slate-100 bg-white shadow-[0_30px_80px_rgba(15,23,42,0.08)]">
                 <div class="grid lg:grid-cols-[0.78fr_1.22fr]">
-                    <div class="bg-[#0d2f52] p-10 md:p-14 text-white">
-                        <p class="text-[11px] font-black uppercase tracking-[0.22em] text-[#e9c95a] mb-4">BOOKING SUPPORT</p>
+                    <div class="bg-[#0e5a63] p-10 md:p-14 text-white">
+                        <p class="text-[11px] font-black uppercase tracking-[0.22em] text-[#d7b55b] mb-4">BOOKING SUPPORT</p>
                         <h2 class="text-3xl md:text-4xl font-black mb-5 leading-tight text-white">Dental Advice. Booking Support.</h2>
                         <div class="space-y-4 text-sm text-white/80">
                             <div class="flex gap-3">
-                                <span class="mt-1 w-2 h-2 rounded-full bg-[#e9c95a] flex-shrink-0"></span>
+                                <span class="mt-1 w-2 h-2 rounded-full bg-[#d7b55b] flex-shrink-0"></span>
                                 <p>Tell us what treatment you need.</p>
                             </div>
                             <div class="flex gap-3">
-                                <span class="mt-1 w-2 h-2 rounded-full bg-[#e9c95a] flex-shrink-0"></span>
+                                <span class="mt-1 w-2 h-2 rounded-full bg-[#d7b55b] flex-shrink-0"></span>
                                 <p>We’ll suggest suitable clinics and next steps.</p>
                             </div>
                             <div class="flex gap-3">
-                                <span class="mt-1 w-2 h-2 rounded-full bg-[#e9c95a] flex-shrink-0"></span>
+                                <span class="mt-1 w-2 h-2 rounded-full bg-[#d7b55b] flex-shrink-0"></span>
                                 <p>We’ll help you book a time that works.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="p-10 md:p-14 bg-[#fdfefe]">
+                    <div class="p-10 md:p-14 bg-[#fbfaf6]">
                         <form class="space-y-5">
                             <div class="grid md:grid-cols-2 gap-5 text-left">
                                 <div>
@@ -438,7 +454,7 @@
         </div>
     </section>
 
-    <footer class="border-t border-slate-100 bg-[#fdfefe] px-6 py-10">
+    <footer class="border-t border-slate-100 bg-[#fbfaf6] px-6 py-10">
         <div class="mx-auto flex max-w-[1440px] flex-col gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
             <a href="index.html" class="text-xl font-black tracking-tighter">DENTAL<span class="text-blue-600">TOURISM</span></a>
             <p class="text-xs font-bold uppercase tracking-[0.24em] text-slate-400">UCsmile platform prototype.</p>
@@ -446,7 +462,7 @@
     </footer>
 
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
-            <div id="wa-widget" class="hidden w-[min(92vw,22rem)] overflow-hidden rounded-[1.75rem] border border-slate-100 bg-[#f4f9fc] shadow-[0_25px_80px_rgba(15,95,154,0.22)]">
+            <div id="wa-widget" class="hidden w-[min(92vw,22rem)] overflow-hidden rounded-[1.75rem] border border-slate-100 bg-[#f3efe7] shadow-[0_25px_80px_rgba(14,90,99,0.22)]">
             <div class="dark-panel bg-slate-900 p-5 text-white">
                 <div class="flex items-start justify-between gap-4">
                     <div>
@@ -713,7 +729,9 @@
         const waMessage = document.getElementById('wa-message');
         const heroWaOpen = document.getElementById('hero-wa-open');
         const comparisonOrigin = document.getElementById('comparison-origin');
-        const comparisonTreatment = document.getElementById('comparison-treatment');
+        const comparisonServices = document.getElementById('comparison-services');
+        const comparisonServiceCount = document.getElementById('comparison-service-count');
+        const comparisonBreakdown = document.getElementById('comparison-breakdown');
         const comparisonSavings = document.getElementById('comparison-savings');
         const comparisonSummary = document.getElementById('comparison-summary');
 
@@ -725,19 +743,23 @@
             kor: { label: 'South Korea', factor: 3.4 },
             jpn: { label: 'Japan', factor: 4.1 },
             chn: { label: 'China', factor: 3.0 },
+            rus: { label: 'Russia', factor: 3.2 },
             usa: { label: 'USA', factor: 5.5 }
         };
 
         const comparisonData = [
-            { key: 'cleaning', label: 'Cleaning + exam', vn: 45 },
-            { key: 'root-canal-crown', label: 'Root canal + crown', vn: 420 },
-            { key: 'implant', label: 'Single implant', vn: 780 },
-            { key: 'veneer', label: 'Veneers (per tooth)', vn: 280 },
-            { key: 'braces', label: 'Braces / Orthodontics', vn: 1200 },
-            { key: 'smile-makeover', label: 'Full smile makeover', vn: 2200 }
+            { key: 'cleaning', label: 'Cleaning + exam', vn: 45, quantity: false },
+            { key: 'whitening', label: 'Whitening', vn: 150, quantity: false },
+            { key: 'root-canal-crown', label: 'Root canal + crown', vn: 420, quantity: false },
+            { key: 'implant', label: 'Single implant', vn: 780, quantity: true },
+            { key: 'veneer', label: 'Veneers (per tooth)', vn: 280, quantity: true },
+            { key: 'braces', label: 'Braces / Orthodontics', vn: 1200, quantity: false },
+            { key: 'invisalign', label: 'Invisalign', vn: 1800, quantity: false },
+            { key: 'smile-makeover', label: 'Full smile makeover', vn: 2200, quantity: false }
         ];
 
         const formatMoney = (value) => `$${Math.round(value).toLocaleString('en-US')}`;
+        const formatApproxMoney = (value) => `~${formatMoney(value)}`;
 
         const buildWhatsAppUrl = (message = '') => {
             const text = message.trim();
@@ -750,22 +772,118 @@
         };
 
         const renderComparisonEngine = () => {
-            if (!comparisonOrigin || !comparisonTreatment || !comparisonSavings || !comparisonSummary) return;
-
-            const previousTreatment = comparisonTreatment.value || comparisonData[0].key;
-            comparisonTreatment.innerHTML = comparisonData.map((item) => `<option value="${item.key}">${item.label}</option>`).join('');
-            comparisonTreatment.value = previousTreatment;
+            if (!comparisonOrigin || !comparisonServices || !comparisonServiceCount || !comparisonBreakdown || !comparisonSavings || !comparisonSummary) return;
 
             const selectedOriginKey = comparisonOrigin.value || 'aus';
             const selectedOrigin = comparisonOrigins[selectedOriginKey] || comparisonOrigins.aus;
-            const selectedTreatmentKey = comparisonTreatment.value || comparisonData[0].key;
-            const selectedTreatment = comparisonData.find((item) => item.key === selectedTreatmentKey) || comparisonData[0];
-            const originPrice = selectedTreatment.vn * selectedOrigin.factor;
-            const netSavings = Math.max(0, originPrice - selectedTreatment.vn);
-            const savingBase = selectedOrigin.label;
+            const selectedServices = Array.from(comparisonServices.querySelectorAll('input[type="checkbox"]:checked')).map((checkbox) => checkbox.value);
+            const selectedRows = comparisonData.filter((item) => selectedServices.includes(item.key));
 
-            comparisonSavings.textContent = formatMoney(netSavings);
-            comparisonSummary.textContent = `${selectedTreatment.label} from ${savingBase} to Vietnam. You save ${formatMoney(netSavings)}.`;
+            comparisonServiceCount.textContent = `${selectedRows.length} selected`;
+
+            if (!selectedRows.length) {
+                comparisonBreakdown.innerHTML = `
+                    <div class="rounded-[1.5rem] border border-dashed border-slate-200 bg-slate-50 p-5 text-sm text-slate-500">
+                        Pick one or more services to compare prices side by side.
+                    </div>
+                `;
+                comparisonSavings.textContent = '~$0';
+                comparisonSummary.textContent = 'Choose one or more treatments to compare.';
+                return;
+            }
+
+            let totalVietnam = 0;
+            let totalOrigin = 0;
+
+            const breakdownRows = selectedRows.map((service) => {
+                const quantityInput = document.getElementById(`comparison-quantity-${service.key}`);
+                const quantity = quantityInput ? parseInt(quantityInput.value) || 1 : 1;
+                const vnPrice = service.vn * quantity;
+                const originPrice = vnPrice * selectedOrigin.factor;
+                totalVietnam += vnPrice;
+                totalOrigin += originPrice;
+
+                return `
+                    <tr class="border-b border-slate-100">
+                        <td class="py-3 px-2">
+                            <div class="text-sm font-bold text-slate-900">${service.label}</div>
+                            ${quantity > 1 ? `<div class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">×${quantity}</div>` : ''}
+                        </td>
+                        <td class="py-3 px-2 text-right">
+                            <div class="text-sm font-black text-slate-950">${formatApproxMoney(originPrice)}</div>
+                        </td>
+                        <td class="py-3 px-2 text-right">
+                            <div class="text-sm font-black text-slate-950">${formatMoney(vnPrice)}</div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+
+            comparisonBreakdown.innerHTML = `
+                <div class="overflow-hidden rounded-[1.5rem] border border-slate-200 bg-white shadow-sm">
+                    <table class="w-full text-sm">
+                        <thead class="bg-slate-50 border-b border-slate-200">
+                            <tr>
+                                <th class="py-3 px-2 text-left text-[10px] font-black uppercase tracking-widest text-slate-500">Treatment</th>
+                                <th class="py-3 px-2 text-right text-[10px] font-black uppercase tracking-widest text-slate-500">${selectedOrigin.label}</th>
+                                <th class="py-3 px-2 text-right text-[10px] font-black uppercase tracking-widest text-slate-500">Vietnam</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${breakdownRows}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            const netSavings = Math.max(0, totalOrigin - totalVietnam);
+            comparisonSavings.textContent = formatApproxMoney(netSavings);
+            comparisonSummary.textContent = 'Estimated savings for selected treatments.';
+        };
+
+        const renderComparisonServices = () => {
+            if (!comparisonServices) return;
+
+            comparisonServices.innerHTML = comparisonData.map((service, index) => {
+                const inputId = `comparison-service-${service.key}`;
+                const quantityId = `comparison-quantity-${service.key}`;
+                const isChecked = index < 2 ? 'checked' : '';
+                const quantityHtml = service.quantity ? `
+                    <div class="comparison-quantity-group mt-2 flex items-center gap-2 ${isChecked ? '' : 'hidden'}">
+                        <label for="${quantityId}" class="text-[10px] font-bold uppercase tracking-[0.18em] text-slate-400">Qty:</label>
+                        <input id="${quantityId}" type="number" min="1" max="20" value="1" class="w-12 h-6 text-xs text-center border border-slate-200 rounded px-1" ${isChecked ? '' : 'disabled'}>
+                    </div>
+                ` : '';
+                return `
+                    <label for="${inputId}" class="flex cursor-pointer items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm transition hover:border-blue-200 hover:bg-blue-50">
+                        <input id="${inputId}" type="checkbox" value="${service.key}" class="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-600" ${isChecked}>
+                        <span class="block flex-1">
+                            <span class="block text-sm font-bold text-slate-900">${service.label}</span>
+                            <span class="block text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">VN from ${formatMoney(service.vn)}</span>
+                            ${quantityHtml}
+                        </span>
+                    </label>
+                `;
+            }).join('');
+
+            comparisonServices.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+                checkbox.addEventListener('change', (e) => {
+                    const label = e.target.closest('label');
+                    const quantityGroup = label.querySelector('.comparison-quantity-group');
+                    const quantityInput = label.querySelector('input[type="number"]');
+                    if (quantityGroup) {
+                        quantityGroup.classList.toggle('hidden', !e.target.checked);
+                    }
+                    if (quantityInput) {
+                        quantityInput.disabled = !e.target.checked;
+                    }
+                    renderComparisonEngine();
+                });
+            });
+
+            comparisonServices.querySelectorAll('input[type="number"]').forEach((input) => {
+                input.addEventListener('input', renderComparisonEngine);
+            });
         };
 
         const clinicCardHtml = (clinic, index) => `
@@ -844,12 +962,18 @@
             });
         }
 
-        renderComparisonEngine();
+        renderComparisonServices();
+        // Disable quantity inputs for unchecked services initially
+        comparisonServices.querySelectorAll('input[type="checkbox"]').forEach((checkbox) => {
+            const quantityInput = checkbox.closest('label').querySelector('input[type="number"]');
+            if (quantityInput) {
+                quantityInput.disabled = !checkbox.checked;
+            }
+        });
         if (comparisonOrigin) comparisonOrigin.value = 'aus';
-        if (comparisonTreatment) comparisonTreatment.value = comparisonData[0].key;
+        renderComparisonEngine();
 
         comparisonOrigin?.addEventListener('change', renderComparisonEngine);
-        comparisonTreatment?.addEventListener('change', renderComparisonEngine);
 
         // Init AOS
         AOS.init({ duration: 1000, once: true });
